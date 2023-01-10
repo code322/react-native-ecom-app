@@ -11,4 +11,4 @@ const db = mysql
   })
   .promise();
 
-export default db;
+module.exports = db;
