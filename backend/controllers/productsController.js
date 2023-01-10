@@ -12,4 +12,15 @@ const getAllProducts = async (req, res) => {
   }
 };
 
-module.exports = getAllProducts;
+const getProduct = async (req, res) => {
+  const { id } = req.params;
+  const query = 'SELECT * FORM products WHERE _id=?';
+  try {
+    const [result] = await db.query(query, [id]);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(401).json({ message: error.message });
+  }
+};
+
+module.exports = { getAllProducts, getProduct };
