@@ -22,8 +22,13 @@ const productsSlice = createSlice({
   name: 'products',
   initialState,
   extraReducers: (build) => {
-    build.addCase(getProducts.fulfilled, (state, action) => {
-      state.products = action.payload;
-    });
+    build
+      .addCase(getProducts.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getProducts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.products = action.payload;
+      });
   },
 });
