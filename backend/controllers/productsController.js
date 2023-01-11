@@ -14,7 +14,7 @@ const getAllProducts = async (req, res) => {
 
 const getProduct = async (req, res) => {
   const { id } = req.params;
-  const query = 'SELECT * FORM products WHERE _id=?';
+  const query = 'SELECT * FROM products WHERE _id=?';
   try {
     const [result] = await db.query(query, [id]);
     res.status(200).json(result);
