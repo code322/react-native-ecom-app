@@ -17,3 +17,13 @@ export const getProducts = createAsyncThunk(
     }
   }
 );
+
+const productsSlice = createSlice({
+  name: 'products',
+  initialState,
+  extraReducers: (build) => {
+    build.addCase(getProducts.fulfilled, (state, action) => {
+      state.products = action.payload;
+    });
+  },
+});
