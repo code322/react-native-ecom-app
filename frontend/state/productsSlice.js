@@ -37,3 +37,5 @@ const productsSlice = createSlice({
       });
   },
 });
+
+export default productsSlice.reducer;
