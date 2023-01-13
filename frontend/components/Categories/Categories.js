@@ -7,18 +7,18 @@ const Categories = ({ title, Icon, id, setSelectedItem, selectedItem }) => {
     <TouchableOpacity
       activeOpacity={0.8}
       style={style.container}
-      onPress={() => setSelectedItem(id)}
+      onPress={() => setSelectedItem(title)}
     >
       <View
         style={[
           style.iconContainer,
-          { backgroundColor: selectedItem === id ? '#000' : '#fff' },
+          { backgroundColor: selectedItem === title ? '#000' : '#fff' },
         ]}
       >
         <Icon
           width={40}
           height={40}
-          fill={selectedItem === id ? '#fff' : '#909090'}
+          fill={selectedItem === title ? '#fff' : '#909090'}
         />
       </View>
       <Text style={style.title}>{title}</Text>
