@@ -1,4 +1,4 @@
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, Image } from 'react-native';
 import React from 'react';
 import { style } from './Style';
 import { AntDesign } from '@expo/vector-icons';
