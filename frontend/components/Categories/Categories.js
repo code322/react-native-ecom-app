@@ -2,7 +2,9 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { style } from './Style';
 
-const Categories = ({ title, Icon, id, setSelectedItem, selectedItem }) => {
+const Categories = ({ ...props }) => {
+  const { title, Icon, id, setSelectedItem, selectedItem } = props;
+
   return (
     <TouchableOpacity
       activeOpacity={0.8}
@@ -12,13 +14,15 @@ const Categories = ({ title, Icon, id, setSelectedItem, selectedItem }) => {
       <View
         style={[
           style.iconContainer,
-          { backgroundColor: selectedItem === title ? '#000' : '#fff' },
+          {
+            backgroundColor: selectedItem === title ? '#000' : '#F5F5F5',
+          },
         ]}
       >
         <Icon
           width={40}
           height={40}
-          fill={selectedItem === title ? '#fff' : '#909090'}
+          fill={selectedItem === title ? '#F5F5F5' : '#909090'}
         />
       </View>
       <Text style={style.title}>{title}</Text>
