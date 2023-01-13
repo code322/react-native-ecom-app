@@ -1,1 +1,6 @@
-export const API_URL = 'http://localhost:5000';
+import { API_URL } from '@env';
+const EnvironmentVariables = {
+  API_URL,
+};
+
+export default EnvironmentVariables;

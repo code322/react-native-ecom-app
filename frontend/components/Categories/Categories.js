@@ -3,7 +3,7 @@ import React from 'react';
 import { style } from './Style';
 
 const Categories = ({ ...props }) => {
-  const { title, Icon, id, setSelectedItem, selectedItem } = props;
+  const { title, Icon, setSelectedItem, selectedItem } = props;
 
   return (
     <TouchableOpacity
