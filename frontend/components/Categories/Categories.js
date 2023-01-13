@@ -1,9 +1,8 @@
 import { View, Text } from 'react-native';
 import React from 'react';
-import Chair from '../../assets/images/chair.svg';
 import { style } from './Style';
 
-const Categories = ({ title = 'title', Icon = Chair }) => {
+const Categories = ({ title, Icon }) => {
   return (
     <View style={[style.container]}>
       <View style={[style.iconContainer, { backgroundColor: '#444' }]}>

@@ -1,9 +1,9 @@
 import Icon from '../assets/images/chair.svg';
 export const categoriesType = [
-  { title: 'popular', image: Icon },
-  { title: 'chair', image: Icon },
-  { title: 'table', image: Icon },
-  { title: 'armchair', image: Icon },
-  { title: 'bed', image: Icon },
-  { title: 'lamb', image: Icon },
+  { id: 1, title: 'popular', image: Icon },
+  { id: 2, title: 'chair', image: Icon },
+  { id: 3, title: 'table', image: Icon },
+  { id: 4, title: 'armchair', image: Icon },
+  { id: 5, title: 'bed', image: Icon },
+  { id: 6, title: 'lamb', image: Icon },
 ];
