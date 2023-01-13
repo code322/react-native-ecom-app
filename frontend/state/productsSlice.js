@@ -12,7 +12,6 @@ const API_URL = EnvironmentVariables.API_URL;
 export const getAllProducts = createAsyncThunk(
   'products/getAllProducts',
   async (_, { rejectWithValue }) => {
-    console.log('called');
     try {
       const { data } = await axios.get(`${API_URL}/api/products`);
       return data;
