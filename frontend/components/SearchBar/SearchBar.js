@@ -3,13 +3,18 @@ import React from 'react';
 import { style } from './Style';
 import { AntDesign } from '@expo/vector-icons';
 
-const SearchBar = () => {
+const SearchBar = ({ setSearch, search }) => {
   return (
     <View style={style.container}>
       <View style={style.searchIcon}>
         <AntDesign name='search1' size={34} color='gray' />
       </View>
-      <TextInput style={style.searchInput} placeholder='Search' />
+      <TextInput
+        onChangeText={(prop) => setSearch(prop)}
+        style={style.searchInput}
+        placeholder='Search'
+        value={search}
+      />
     </View>
   );
 };
