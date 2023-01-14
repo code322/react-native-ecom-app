@@ -2,7 +2,8 @@ const db = require('./config/db');
 const products = require('./products');
 
 const seedDB = async () => {
-  const sqlInsert = `INSERT INTO products(title, images, category, price, description) VALUES (?,?,?,?,? )`;
+  await db.query('DELETE FROM products');
+  const sqlInsert = `INSERT INTO products (title, images, category, price, description) VALUES (?,?,?,?,? )`;
 
   for (const item of products) {
     const images = JSON.stringify(item.images);

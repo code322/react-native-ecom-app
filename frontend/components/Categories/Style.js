@@ -2,8 +2,8 @@ import { StyleSheet } from 'react-native';
 
 export const style = StyleSheet.create({
   container: {
+    height: 85,
     width: 75,
-    justifyContent: 'center',
     alignItems: 'center',
   },
   iconContainer: {
