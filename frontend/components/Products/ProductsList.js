@@ -3,9 +3,11 @@ import React from 'react';
 import { style } from './Style';
 
 const ListProducts = ({ images, title, price }) => {
+  let cost = '$' + price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+
   return (
     <>
-      <TouchableOpacity style={style.imageContainer}>
+      <TouchableOpacity activeOpacity={0.8} style={style.imageContainer}>
         <Image
           style={style.image}
           source={{
@@ -13,7 +15,7 @@ const ListProducts = ({ images, title, price }) => {
           }}
         />
         <Text>{title}</Text>
-        <Text>{price}</Text>
+        <Text>{cost}</Text>
       </TouchableOpacity>
     </>
   );
