@@ -1,11 +1,11 @@
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import React, { useEffect } from 'react';
-import Container from '../../components/Container/Container';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../../state/productSlice';
 import ImageCarousel from '../../components/ImageCarousel/ImageCarousel';
 import { style } from './Style';
-
+import { Fontisto } from '@expo/vector-icons';
+import { colors } from '../../theme/colors';
 const Product = ({ route }) => {
   const { id } = route.params;
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const Product = ({ route }) => {
   console.log(product);
 
   let price =
-    '$' + product?.price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    '$' + product?.price?.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 
   return (
     <>
@@ -31,9 +31,12 @@ const Product = ({ route }) => {
           <Text style={style.price}>{price}</Text>
           <Text style={style.description}>{product?.description}</Text>
         </View>
-        <View>
-          <TouchableOpacity>
-            <Text>Add to Cart</Text>
+        <View style={style.buttonsContainer}>
+          <TouchableOpacity activeOpacity={0.8} style={style.favIconContainer}>
+            <Fontisto name='favorite' size={30} color={colors.black} />
+          </TouchableOpacity>
+          <TouchableOpacity activeOpacity={0.8} style={style.addToCart}>
+            <Text style={style.addCartTitle}>Add to Cart</Text>
           </TouchableOpacity>
         </View>
       </View>
