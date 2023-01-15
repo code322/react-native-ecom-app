@@ -20,7 +20,8 @@ const getProduct = async (req, res) => {
   const query = 'SELECT * FROM products WHERE _id=?';
   try {
     const [result] = await db.query(query, [id]);
-    res.status(200).json(result);
+
+    res.status(200).json(result[0]);
   } catch (error) {
     res.status(401).json({ message: error.message });
   }
