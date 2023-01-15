@@ -6,4 +6,5 @@ export const colors = {
   black: '#000000',
   gray: '#909090',
   lightGray: '#F5F5F5',
+  mediumGray: '#e8e8e8',
 };
