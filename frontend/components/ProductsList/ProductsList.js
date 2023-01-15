@@ -3,7 +3,7 @@ import React from 'react';
 import { style } from './Style';
 import { useNavigation } from '@react-navigation/native';
 
-const ListProducts = ({ images, title, price }) => {
+const ListProducts = ({ images, title, price, id }) => {
   let cost = '$' + price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 
   const navigation = useNavigation();
@@ -11,7 +11,7 @@ const ListProducts = ({ images, title, price }) => {
   return (
     <>
       <TouchableOpacity
-        onPress={() => navigation.push('Product')}
+        onPress={() => navigation.push('Product', { id })}
         activeOpacity={0.8}
         style={style.imageContainer}
       >
