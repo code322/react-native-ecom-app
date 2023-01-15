@@ -12,9 +12,16 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Cart = ({ navigation }) => {
   const { cart } = useSelector((state) => state.cartSlice);
+
   const renderCart = ({ item }) => (
-    <CartItem title={item.title} price={item.price} image={item.images[0]} />
+    <CartItem
+      title={item.title}
+      price={item.price}
+      image={item.images[0]}
+      id={item._id}
+    />
   );
+
   let insets = useSafeAreaInsets();
   let bottomTab;
   if (Platform.OS === 'android') {
