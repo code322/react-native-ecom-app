@@ -3,7 +3,7 @@ import EnvironmentVariables from '../helpers/api';
 import axios from 'axios';
 const initialState = {
   products: [],
-  isLoading: false,
+  status: 'idle',
   error: null,
 };
 
@@ -27,14 +27,14 @@ const productsSlice = createSlice({
   extraReducers: (build) => {
     build
       .addCase(getAllProducts.pending, (state) => {
-        state.isLoading = true;
+        state.status = 'loading';
       })
       .addCase(getAllProducts.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.status = 'succeeded';
         state.products = action.payload;
       })
       .addCase(getAllProducts.rejected, (state, action) => {
-        state.isLoading = false;
+        state.status = 'failed';
         state.products = [];
         state.error = action.payload;
       });
