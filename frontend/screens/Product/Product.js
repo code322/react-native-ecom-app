@@ -6,6 +6,7 @@ import ImageCarousel from '../../components/ImageCarousel/ImageCarousel';
 import { style } from './Style';
 import { Fontisto } from '@expo/vector-icons';
 import { colors } from '../../theme/colors';
+import { addToCart } from '../../state/cartSlice';
 const Product = ({ route }) => {
   const { id } = route.params;
   const dispatch = useDispatch();
@@ -35,7 +36,11 @@ const Product = ({ route }) => {
           <TouchableOpacity activeOpacity={0.8} style={style.favIconContainer}>
             <Fontisto name='favorite' size={30} color={colors.black} />
           </TouchableOpacity>
-          <TouchableOpacity activeOpacity={0.8} style={style.addToCart}>
+          <TouchableOpacity
+            onPress={() => dispatch(addToCart(product))}
+            activeOpacity={0.8}
+            style={style.addToCart}
+          >
             <Text style={style.addCartTitle}>Add to Cart</Text>
           </TouchableOpacity>
         </View>
