@@ -1,14 +1,17 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { style } from './Style';
+import { useNavigation } from '@react-navigation/native';
 
-const ListProducts = ({ images, title, price, navigate }) => {
+const ListProducts = ({ images, title, price }) => {
   let cost = '$' + price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+
+  const navigation = useNavigation();
 
   return (
     <>
       <TouchableOpacity
-        onPress={() => navigate.push('Product')}
+        onPress={() => navigation.push('Product')}
         activeOpacity={0.8}
         style={style.imageContainer}
       >
