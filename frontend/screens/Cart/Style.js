@@ -10,4 +10,9 @@ export const style = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 5,
   },
+  header: {
+    fontSize: 20,
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
 });
