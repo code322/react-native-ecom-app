@@ -15,4 +15,7 @@ export const style = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
   },
+  container: {
+    marginTop: 20,
+  },
 });

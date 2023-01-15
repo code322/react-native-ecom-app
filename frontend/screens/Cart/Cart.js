@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, FlatList, Platform } from 'react-native';
 import React from 'react';
 import { style } from './Style';
 import { useSelector } from 'react-redux';
@@ -7,16 +7,21 @@ import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { colors } from '../../theme/colors';
 import CartItem from '../../components/CartItem/CartItem';
-
-const item = {
-  title: 'coffee table',
-  price: 12,
-  image:
-    'https://www.jysk.ca/media/catalog/product/u/d/udsbjerg-chair-grey.jpg?quality=80&fit=bounds&height=&width=&canvas=://',
-};
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Cart = ({ navigation }) => {
-  const state = useSelector((state) => state.cartSlice);
+  const { cart } = useSelector((state) => state.cartSlice);
+  const renderCart = ({ item }) => (
+    <CartItem title={item.title} price={item.price} image={item.images[0]} />
+  );
+  let insets = useSafeAreaInsets();
+  let bottomTab;
+  if (Platform.OS === 'android') {
+    bottomTab = useBottomTabBarHeight();
+  } else {
+    bottomTab = insets.bottom;
+  }
 
   return (
     <Container>
@@ -28,12 +33,13 @@ const Cart = ({ navigation }) => {
         <Ionicons name='arrow-back-outline' size={24} color={colors.black} />
       </TouchableOpacity>
       <Text style={style.header}>Cart</Text>
-      <View>
-        {/* //Container */}
-
-        <CartItem title={item.title} price={item.price} image={item.image} />
-        <CartItem title={item.title} price={item.price} image={item.image} />
-        <CartItem title={item.title} price={item.price} image={item.image} />
+      <View style={[style.container, { marginBottom: bottomTab }]}>
+        <FlatList
+          data={cart}
+          renderItem={renderCart}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={(item) => item._id}
+        />
       </View>
     </Container>
   );
