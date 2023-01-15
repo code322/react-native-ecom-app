@@ -32,13 +32,6 @@ const Cart = ({ navigation }) => {
 
   return (
     <Container>
-      <TouchableOpacity
-        activeOpacity={0.8}
-        style={style.backIconContainer}
-        onPress={() => navigation.goBack()}
-      >
-        <Ionicons name='arrow-back-outline' size={24} color={colors.black} />
-      </TouchableOpacity>
       <Text style={style.header}>Cart</Text>
       <View style={[style.container, { marginBottom: bottomTab }]}>
         <FlatList

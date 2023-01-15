@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../../state/productSlice';
 import ImageCarousel from '../../components/ImageCarousel/ImageCarousel';
 import { style } from './Style';
-import { Fontisto } from '@expo/vector-icons';
+import { Fontisto, Ionicons } from '@expo/vector-icons';
 import { colors } from '../../theme/colors';
 import { addToCart } from '../../state/cartSlice';
-const Product = ({ route }) => {
+const Product = ({ route, navigation }) => {
   const { id } = route.params;
   const dispatch = useDispatch();
 
@@ -22,11 +22,18 @@ const Product = ({ route }) => {
     '$' + product?.price?.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 
   return (
-    <>
+    <View style={style.container}>
+      <TouchableOpacity
+        activeOpacity={0.8}
+        style={style.backIconContainer}
+        onPress={() => navigation.goBack()}
+      >
+        <Ionicons name='arrow-back-outline' size={24} color={colors.black} />
+      </TouchableOpacity>
       <View>
         <ImageCarousel image={product.images} />
       </View>
-      <View style={style.container}>
+      <View style={style.product}>
         <View>
           <Text style={style.title}>{product?.title}</Text>
           <Text style={style.price}>{price}</Text>
@@ -45,7 +52,7 @@ const Product = ({ route }) => {
           </TouchableOpacity>
         </View>
       </View>
-    </>
+    </View>
   );
 };
 

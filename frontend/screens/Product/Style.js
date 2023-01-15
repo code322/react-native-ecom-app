@@ -3,6 +3,22 @@ import { colors } from '../../theme/colors';
 
 export const style = StyleSheet.create({
   container: {
+    flex: 1,
+    position: ' relative',
+  },
+  backIconContainer: {
+    backgroundColor: colors.mediumGray,
+    height: 50,
+    width: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    position: 'absolute',
+    zIndex: 100,
+    top: 40,
+    left: 30,
+  },
+  product: {
     backgroundColor: colors.white,
     paddingHorizontal: 20,
     paddingTop: 40,
