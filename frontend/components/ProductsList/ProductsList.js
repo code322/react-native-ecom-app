@@ -14,8 +14,8 @@ const ListProducts = ({ images, title, price }) => {
             uri: `${images[0]}`,
           }}
         />
-        <Text>{title}</Text>
-        <Text>{cost}</Text>
+        <Text style={style.title}>{title}</Text>
+        <Text style={style.price}>{cost}</Text>
       </TouchableOpacity>
     </>
   );

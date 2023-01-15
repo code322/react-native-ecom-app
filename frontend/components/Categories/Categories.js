@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { style } from './Style';
+import { colors } from '../../theme/colors';
 
 const Categories = ({ ...props }) => {
   const { title, Icon, setSelectedCategory, selectedCategory } = props;
@@ -15,14 +16,15 @@ const Categories = ({ ...props }) => {
         style={[
           style.iconContainer,
           {
-            backgroundColor: selectedCategory === title ? '#000' : '#F5F5F5',
+            backgroundColor:
+              selectedCategory === title ? colors.black : colors.lightGray,
           },
         ]}
       >
         <Icon
           width={40}
           height={40}
-          fill={selectedCategory === title ? '#F5F5F5' : '#909090'}
+          fill={selectedCategory === title ? colors.lightGray : colors.gray}
         />
       </View>
       <Text style={style.title}>{title}</Text>
