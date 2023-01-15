@@ -6,14 +6,13 @@ export const styles = StyleSheet.create({
   image: {
     width: width,
     height: height * 0.45,
-    backgroundColor: 'blue',
   },
 
   pagination: {
     flexDirection: 'row',
     alignSelf: 'center',
     position: 'absolute',
-    bottom: 50,
+    bottom: 30,
     zIndex: 100,
   },
   paginationLine: {
