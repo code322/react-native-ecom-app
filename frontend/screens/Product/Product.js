@@ -1,8 +1,9 @@
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import React, { useEffect } from 'react';
 import Container from '../../components/Container/Container';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../../state/productSlice';
+import ImageCarousel from '../../components/ImageCarousel/ImageCarousel';
 
 const Product = ({ route }) => {
   const { id } = route.params;
@@ -13,11 +14,14 @@ const Product = ({ route }) => {
   }, [id]);
 
   const { product } = useSelector((state) => state.productSlice);
+  console.log(product);
 
   return (
-    <Container>
-      <Text>{`${product.title} `}</Text>
-    </Container>
+    <>
+      <ScrollView>
+        <ImageCarousel image={product.images} />
+      </ScrollView>
+    </>
   );
 };
 
