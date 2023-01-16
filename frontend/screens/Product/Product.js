@@ -16,7 +16,6 @@ const Product = ({ route, navigation }) => {
   }, [id]);
 
   const { product } = useSelector((state) => state.productSlice);
-  console.log(product);
 
   let price =
     '$' + product?.price?.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
