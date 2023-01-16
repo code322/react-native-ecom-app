@@ -25,7 +25,7 @@ const Favourites = () => {
   if (Platform.OS === 'android') {
     bottomTab = useBottomTabBarHeight();
   } else {
-    bottomTab = insets.bottom;
+    bottomTab = -insets.bottom;
   }
   return (
     <Container>

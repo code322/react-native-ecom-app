@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import Container from '../../components/Container/Container';
 import { Ionicons } from '@expo/vector-icons';
 import CartItem from '../../components/Item/Item';
-import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Cart = ({ navigation }) => {
@@ -21,13 +20,13 @@ const Cart = ({ navigation }) => {
     />
   );
 
+  //remove the margin bottom bug from the bottom tab for ios
   let insets = useSafeAreaInsets();
   let bottomTab;
   if (Platform.OS === 'android') {
-    bottomTab = useBottomTabBarHeight();
+    bottomTab = 0;
   } else {
     bottomTab = insets.bottom;
-    bottomTab = 0;
   }
   if (cart.length < 1) {
     return (
@@ -50,7 +49,7 @@ const Cart = ({ navigation }) => {
   return (
     <Container>
       <Text style={style.header}>Cart</Text>
-      <View style={[style.container]}>
+      <View style={[style.container, { marginBottom: -bottomTab }]}>
         <FlatList
           data={cart}
           renderItem={renderCart}
