@@ -26,6 +26,7 @@ const Cart = ({ navigation }) => {
     bottomTab = useBottomTabBarHeight();
   } else {
     bottomTab = insets.bottom;
+    bottomTab = 0;
   }
   if (cart.length < 1) {
     return (
@@ -48,7 +49,7 @@ const Cart = ({ navigation }) => {
   return (
     <Container>
       <Text style={style.header}>Cart</Text>
-      <View style={[style.container, { marginBottom: bottomTab }]}>
+      <View style={[style.container]}>
         <FlatList
           data={cart}
           renderItem={renderCart}

@@ -8,7 +8,7 @@ import Product from '../screens/Product/Product';
 import Cart from '../screens/Cart/Cart';
 import { Fontisto } from '@expo/vector-icons';
 import { colors } from '../theme/colors';
-import Favourites from '../screens/Favourites/Favourites';
+import Favourites from '../screens/Favourite/Favourite';
 
 const ProductsTab = () => {
   const ProductsStack = createStackNavigator();
