@@ -1,9 +1,13 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Products from '../screens/Products/Products';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Entypo } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 
 import Product from '../screens/Product/Product';
 import Cart from '../screens/Cart/Cart';
+import { Ionicons } from '@expo/vector-icons';
+import { colors } from '../theme/colors';
 
 const ProductsTab = () => {
   const ProductsStack = createStackNavigator();
@@ -23,8 +27,37 @@ export const Tabs = () => {
       screenOptions={{ headerShown: false }}
       sceneContainerStyle={{ overflow: 'visible' }}
     >
-      <TabsStack.Screen name='ProductsTab' component={ProductsTab} />
-      <TabsStack.Screen name='Cart' component={Cart} />
+      <TabsStack.Screen
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Entypo
+              name='shopping-bag'
+              size={24}
+              color={focused ? colors.blue : colors.black}
+            />
+          ),
+          title: 'Products',
+          tabBarActiveTintColor: colors.blue,
+          tabBarInactiveTintColor: colors.black,
+        }}
+        name='ProductsTab'
+        component={ProductsTab}
+      />
+      <TabsStack.Screen
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <FontAwesome
+              name='shopping-cart'
+              size={24}
+              color={focused ? colors.blue : colors.black}
+            />
+          ),
+          tabBarActiveTintColor: colors.blue,
+          tabBarInactiveTintColor: colors.black,
+        }}
+        name='Cart'
+        component={Cart}
+      />
     </TabsStack.Navigator>
   );
 };
