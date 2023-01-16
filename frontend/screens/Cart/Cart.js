@@ -4,7 +4,7 @@ import { style } from './Style';
 import { useSelector } from 'react-redux';
 import Container from '../../components/Container/Container';
 import { Ionicons } from '@expo/vector-icons';
-import CartItem from '../../components/CartItem/CartItem';
+import CartItem from '../../components/Item/Item';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
