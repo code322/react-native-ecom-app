@@ -7,7 +7,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { removeItem } from '../../state/cartSlice';
 import { useDispatch } from 'react-redux';
 
-const CartItem = ({ price, title, image, id }) => {
+const Item = ({ price, title, image, id }) => {
   const dispatch = useDispatch();
   let cost = convertToDollars(price);
   return (
@@ -34,4 +34,4 @@ const CartItem = ({ price, title, image, id }) => {
   );
 };
 
-export default CartItem;
+export default Item;
