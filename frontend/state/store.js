@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import productsSlice from './productsSlice';
 import productSlice from './productSlice';
+import favouriteSlice from './FavouriteSlice';
 import cartSlice from './cartSlice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { persistReducer } from 'redux-persist';
@@ -11,6 +12,7 @@ const reducers = combineReducers({
   productsSlice,
   productSlice,
   cartSlice,
+  favouriteSlice,
 });
 const persistConfig = {
   key: 'root',
