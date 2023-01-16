@@ -6,8 +6,9 @@ import { FontAwesome } from '@expo/vector-icons';
 
 import Product from '../screens/Product/Product';
 import Cart from '../screens/Cart/Cart';
-import { Ionicons } from '@expo/vector-icons';
+import { Fontisto } from '@expo/vector-icons';
 import { colors } from '../theme/colors';
+import Favourites from '../screens/Favourites/Favourites';
 
 const ProductsTab = () => {
   const ProductsStack = createStackNavigator();
@@ -42,6 +43,21 @@ export const Tabs = () => {
         }}
         name='ProductsTab'
         component={ProductsTab}
+      />
+      <TabsStack.Screen
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Fontisto
+              name='favorite'
+              size={24}
+              color={focused ? colors.blue : colors.black}
+            />
+          ),
+          tabBarActiveTintColor: colors.blue,
+          tabBarInactiveTintColor: colors.black,
+        }}
+        name='FavouritesTab'
+        component={Favourites}
       />
       <TabsStack.Screen
         options={{
