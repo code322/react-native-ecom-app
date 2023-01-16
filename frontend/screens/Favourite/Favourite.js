@@ -8,7 +8,7 @@ import Container from '../../components/Container/Container';
 import { style } from './Style';
 
 const Favourites = () => {
-  const { cart } = useSelector((state) => state.cartSlice);
+  const { favourites } = useSelector((state) => state.favouriteSlice);
 
   const renderFavourte = ({ item }) => (
     <FavouriteItem
@@ -16,6 +16,7 @@ const Favourites = () => {
       price={item.price}
       image={item.images[0]}
       id={item._id}
+      screen='favourite'
     />
   );
 
@@ -31,7 +32,7 @@ const Favourites = () => {
       <Text style={style.header}>Favourites</Text>
       <View style={[style.container, { marginBottom: bottomTab }]}>
         <FlatList
-          data={cart}
+          data={favourites}
           renderItem={renderFavourte}
           showsVerticalScrollIndicator={false}
           keyExtractor={(item) => item._id}

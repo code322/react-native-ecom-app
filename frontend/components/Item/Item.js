@@ -6,8 +6,10 @@ import { convertToDollars } from '../../helpers/tools';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { removeItem } from '../../state/cartSlice';
 import { useDispatch } from 'react-redux';
+import { removeFromFav } from '../../state/FavouriteSlice';
 
-const Item = ({ price, title, image, id }) => {
+const Item = ({ ...props }) => {
+  const { price, title, image, id, screen } = props;
   const dispatch = useDispatch();
   let cost = convertToDollars(price);
   return (
@@ -26,7 +28,11 @@ const Item = ({ price, title, image, id }) => {
       </View>
       <TouchableOpacity
         activeOpacity={0.8}
-        onPress={() => dispatch(removeItem(id))}
+        onPress={() =>
+          screen !== 'favourite'
+            ? dispatch(removeItem(id))
+            : dispatch(removeFromFav(id))
+        }
       >
         <AntDesign name='delete' size={24} color='black' />
       </TouchableOpacity>

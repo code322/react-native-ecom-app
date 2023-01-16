@@ -7,6 +7,7 @@ import { style } from './Style';
 import { Fontisto, Ionicons } from '@expo/vector-icons';
 import { colors } from '../../theme/colors';
 import { addToCart } from '../../state/cartSlice';
+import { addToFav } from '../../state/FavouriteSlice';
 const Product = ({ route, navigation }) => {
   const { id } = route.params;
   const dispatch = useDispatch();
@@ -39,7 +40,11 @@ const Product = ({ route, navigation }) => {
           <Text style={style.description}>{product?.description}</Text>
         </View>
         <View style={style.buttonsContainer}>
-          <TouchableOpacity activeOpacity={0.8} style={style.favIconContainer}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={style.favIconContainer}
+            onPress={() => dispatch(addToFav(product))}
+          >
             <Fontisto name='favorite' size={30} color={colors.black} />
           </TouchableOpacity>
           <TouchableOpacity

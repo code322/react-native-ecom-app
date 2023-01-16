@@ -17,6 +17,7 @@ const Cart = ({ navigation }) => {
       price={item.price}
       image={item.images[0]}
       id={item._id}
+      screen='cart'
     />
   );
 
