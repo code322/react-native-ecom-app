@@ -4,7 +4,7 @@ import { colors } from '../../theme/colors';
 export const style = StyleSheet.create({
   container: {
     flex: 1,
-    position: ' relative',
+    position: 'relative',
   },
   backIconContainer: {
     backgroundColor: colors.mediumGray,
