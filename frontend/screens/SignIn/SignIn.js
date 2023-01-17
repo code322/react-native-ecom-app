@@ -8,11 +8,27 @@ import { styles } from './Style';
 import FormContainer from '../../components/FormContainer/FormContainer';
 import InputField from '../../components/InputField/InputField';
 import Button from '../../components/Button/Button';
+import axios from 'axios';
+import EnvironmentVariables from '../../helpers/api';
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  console.log(email, password);
+  const API_URL = EnvironmentVariables.API_URL;
+
+  const handleSignIn = async () => {
+    const body = { email: email, password: password };
+    console.log(body);
+    try {
+      const { data } = await axios.post(`${API_URL}/api/auth/signin`, body, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    } catch (error) {
+      console.log(error.message, error.response.data);
+    }
+  };
   return (
     <Container>
       <View style={styles.navContainer}>
@@ -45,6 +61,7 @@ const SignIn = ({ navigation }) => {
             title={'sign in'}
             bgColor={colors.black}
             txColor={colors.white}
+            handlePress={handleSignIn}
           />
         </ScrollView>
       </FormContainer>

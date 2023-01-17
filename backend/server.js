@@ -6,6 +6,16 @@ const authRoutes = require('./routes/authRoute');
 const PORT = 5000 || process.env.PORT;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use((_, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PUT, PATCH, DELETE'
+  );
+
+  next();
+});
 
 app.get('/', (req, res) => {
   res.send('main');
