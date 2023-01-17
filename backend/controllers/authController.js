@@ -24,16 +24,19 @@ const signUp = async (req, res) => {
     await db.query(sqlInsert, values);
 
     //create jwt token
-    let newUser = await getUser(email);
+    let user = await getUser(email);
     const token_secret = process.env.TOKEN_SECRET;
-    const token = jwt.sign(newUser._id, token_secret, {
+    const token = jwt.sign({ id: user._id }, token_secret, {
       expiresIn: '30d',
     });
-    newUser.password = undefined;
+    if (!token)
+      return res.status(400).json({ message: 'Token was not created' });
+    user.password = undefined;
 
+    console.log(user);
     res.status(200).json({
       token,
-      newUser,
+      user,
     });
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -42,10 +45,9 @@ const signUp = async (req, res) => {
 
 const getUser = async (email) => {
   try {
-    const [results] = await db.query(
-      'SELECT name, email FROM Users WHERE email=?',
-      [email]
-    );
+    const [results] = await db.query('SELECT * FROM Users WHERE email=?', [
+      email,
+    ]);
 
     return results[0];
   } catch (error) {

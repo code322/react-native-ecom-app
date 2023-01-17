@@ -5,6 +5,8 @@ const authRoutes = require('./routes/authRoute');
 
 const PORT = 5000 || process.env.PORT;
 
+app.use(express.json());
+
 app.get('/', (req, res) => {
   res.send('main');
 });
