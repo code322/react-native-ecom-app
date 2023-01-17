@@ -21,7 +21,7 @@ export default function App() {
             <StatusBar style='auto' />
             <Stack.Navigator screenOptions={{ headerShown: false }}>
               <Stack.Screen name='Home' component={Home} />
-              <Stack.Screen name='Tabs' component={Tabs} />
+              {/* <Stack.Screen name='Tabs' component={Tabs} /> */}
             </Stack.Navigator>
           </SafeAreaProvider>
         </PersistGate>
