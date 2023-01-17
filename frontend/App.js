@@ -9,6 +9,7 @@ import SignIn from './screens/SignIn/SignIn';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import Home from './screens/Home/Home';
+import SignUp from './screens/SignUp/SignUp';
 
 export default function App() {
   let persistor = persistStore(store);
@@ -21,6 +22,7 @@ export default function App() {
           <SafeAreaProvider>
             <StatusBar style='auto' />
             <Stack.Navigator screenOptions={{ headerShown: false }}>
+              <Stack.Screen name='SignUp' component={SignUp} />
               <Stack.Screen name='SignIn' component={SignIn} />
               <Stack.Screen name='Home' component={Home} />
               {/* <Stack.Screen name='Tabs' component={Tabs} /> */}
