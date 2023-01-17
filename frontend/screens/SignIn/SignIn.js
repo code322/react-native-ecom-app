@@ -6,6 +6,7 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { colors } from '../../theme/colors';
 import { styles } from './Style';
 import FormContainer from '../../components/FormContainer/FormContainer';
+import InputField from '../../components/InputField/InputField';
 
 const SignIn = ({ navigation }) => {
   return (
@@ -20,7 +21,16 @@ const SignIn = ({ navigation }) => {
         <Text style={styles.navTitle}>Sign In</Text>
       </View>
       <FormContainer>
-        <ScrollView keyboardShouldPersistTaps={'handled'}></ScrollView>
+        <ScrollView keyboardShouldPersistTaps={'handled'}>
+          <View>
+            <InputField label={'e-mail'} placeholder={'example@gmail.com'} />
+            <InputField
+              label={'password'}
+              type={'password'}
+              placeholder={'*****'}
+            />
+          </View>
+        </ScrollView>
       </FormContainer>
     </Container>
   );

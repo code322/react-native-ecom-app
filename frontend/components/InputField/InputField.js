@@ -11,18 +11,17 @@ import { styles } from './Style';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../../theme/colors';
 
-const InputField = ({ label, placeholder, type, style, ...props }) => {
+const InputField = ({ label, placeholder, type }) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
       <View style={styles.inputContainer}>
         <TextInput
-          style={[styles.input, style]}
+          style={styles.input}
           placeholder={placeholder}
-          textContentType={type}
-          secureTextEntry={!showPassword}
-          {...props}
+          textContentType={'text' || type}
+          secureTextEntry={type === 'password' ? !showPassword : false}
         />
         {type === 'password' && (
           <TouchableOpacity
@@ -30,24 +29,15 @@ const InputField = ({ label, placeholder, type, style, ...props }) => {
             style={styles.iconContainer}
             onPress={() => setShowPassword(!showPassword)}
           >
-            <Image
-              style={styles.icon}
-              source={
-                showPassword ? (
-                  <Ionicons
-                    name='ios-eye-off-outline'
-                    size={24}
-                    color={colors.black}
-                  />
-                ) : (
-                  <Ionicons
-                    name='ios-eye-outline'
-                    size={24}
-                    color={colors.black}
-                  />
-                )
-              }
-            />
+            {showPassword ? (
+              <Ionicons
+                name='ios-eye-off-outline'
+                size={24}
+                color={colors.black}
+              />
+            ) : (
+              <Ionicons name='ios-eye-outline' size={24} color={colors.black} />
+            )}
           </TouchableOpacity>
         )}
       </View>

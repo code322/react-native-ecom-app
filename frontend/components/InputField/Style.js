@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-
+import { colors } from '../../theme/colors';
 export const styles = StyleSheet.create({
   container: {
     width: '100%',
@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     textTransform: 'capitalize',
     fontSize: 16,
     marginBottom: 5,
-    color: colors.blue,
+    color: colors.black,
   },
   inputContainer: {
     position: 'relative',
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: colors.blue,
+    borderColor: colors.gray,
     fontSize: 16,
     paddingHorizontal: 7,
     paddingVertical: 16,
