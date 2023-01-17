@@ -8,12 +8,14 @@ import { Tabs } from './navigation/Tabs';
 import SignIn from './screens/SignIn/SignIn';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
-import Home from './screens/Home/Home';
-import SignUp from './screens/SignUp/SignUp';
+
+import { AuthNav } from './navigation/AuthNav';
+import { useState } from 'react';
 
 export default function App() {
   let persistor = persistStore(store);
   const Stack = createStackNavigator();
+  const [isAuth, setIsAuth] = useState(false);
 
   return (
     <NavigationContainer>
@@ -22,10 +24,11 @@ export default function App() {
           <SafeAreaProvider>
             <StatusBar style='auto' />
             <Stack.Navigator screenOptions={{ headerShown: false }}>
-              <Stack.Screen name='SignUp' component={SignUp} />
-              <Stack.Screen name='SignIn' component={SignIn} />
-              <Stack.Screen name='Home' component={Home} />
-              {/* <Stack.Screen name='Tabs' component={Tabs} /> */}
+              {isAuth ? (
+                <Stack.Screen name='Tabs' component={Tabs} />
+              ) : (
+                <Stack.Screen name='AuthNav' component={AuthNav} />
+              )}
             </Stack.Navigator>
           </SafeAreaProvider>
         </PersistGate>
