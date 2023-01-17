@@ -5,6 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Tabs } from './navigation/Tabs';
+import SignIn from './screens/SignIn/SignIn';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import Home from './screens/Home/Home';
@@ -20,6 +21,7 @@ export default function App() {
           <SafeAreaProvider>
             <StatusBar style='auto' />
             <Stack.Navigator screenOptions={{ headerShown: false }}>
+              <Stack.Screen name='SignIn' component={SignIn} />
               <Stack.Screen name='Home' component={Home} />
               {/* <Stack.Screen name='Tabs' component={Tabs} /> */}
             </Stack.Navigator>
