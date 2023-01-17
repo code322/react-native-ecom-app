@@ -33,7 +33,45 @@ const signUp = async (req, res) => {
       return res.status(400).json({ message: 'Token was not created' });
     user.password = undefined;
 
+    res.status(200).json({
+      token,
+      user,
+    });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+const signIn = async (req, res) => {
+  const { email, password } = req.body;
+
+  //check if user exists
+  try {
+    const user = await getUser(email);
     console.log(user);
+
+    // send an error if the user does't exist
+    if (!user) return res.status(400).json({ message: 'User does not exist.' });
+
+    // valid password
+    let validPassword = await bcrypt.compare(password, user.password);
+
+    // send an error message if the
+    if (!validPassword)
+      return res.status(400).json({ message: 'Password is not valid' });
+
+    //generate a token
+    const token_secret = process.env.TOKEN_SECRET;
+    const token = jwt.sign({ id: user._id }, token_secret, {
+      expiresIn: '30d',
+    });
+
+    // send an error message if token is not created
+    if (!token)
+      return res.status(400).json({ message: 'Token was not created' });
+
+    // don't send the password
+    user.password = undefined;
     res.status(200).json({
       token,
       user,
@@ -55,4 +93,4 @@ const getUser = async (email) => {
   }
 };
 
-module.exports = { signUp };
+module.exports = { signUp, signIn };
