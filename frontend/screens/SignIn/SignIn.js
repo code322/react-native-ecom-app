@@ -2,9 +2,10 @@ import { View, Text } from 'react-native';
 import React from 'react';
 import Container from '../../components/Container/Container';
 import { Ionicons } from '@expo/vector-icons';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { colors } from '../../theme/colors';
 import { styles } from './Style';
+import FormContainer from '../../components/FormContainer/FormContainer';
 
 const SignIn = ({ navigation }) => {
   return (
@@ -18,6 +19,9 @@ const SignIn = ({ navigation }) => {
         </TouchableOpacity>
         <Text style={styles.navTitle}>Sign In</Text>
       </View>
+      <FormContainer>
+        <ScrollView keyboardShouldPersistTaps={'handled'}></ScrollView>
+      </FormContainer>
     </Container>
   );
 };
