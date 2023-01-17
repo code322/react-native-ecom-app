@@ -4,6 +4,7 @@ export const styles = StyleSheet.create({
   navContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 20,
   },
   navTitle: {
     fontSize: 20,

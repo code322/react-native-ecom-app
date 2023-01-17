@@ -7,6 +7,7 @@ import { colors } from '../../theme/colors';
 import { styles } from './Style';
 import FormContainer from '../../components/FormContainer/FormContainer';
 import InputField from '../../components/InputField/InputField';
+import Button from '../../components/Button/Button';
 
 const SignIn = ({ navigation }) => {
   return (
@@ -30,6 +31,11 @@ const SignIn = ({ navigation }) => {
               placeholder={'*****'}
             />
           </View>
+          <Button
+            title={'sign in'}
+            bgColor={colors.black}
+            txColor={colors.white}
+          />
         </ScrollView>
       </FormContainer>
     </Container>
