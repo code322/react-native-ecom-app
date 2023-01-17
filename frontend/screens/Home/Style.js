@@ -5,7 +5,6 @@ export const style = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: colors.white,
   },
   titleContainer: {
@@ -16,5 +15,8 @@ export const style = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.black,
     textAlign: 'center',
+  },
+  buttonsContainer: {
+    marginTop: 40,
   },
 });

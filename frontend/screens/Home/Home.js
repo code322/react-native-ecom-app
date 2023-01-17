@@ -3,6 +3,7 @@ import React from 'react';
 import { style } from './Style';
 import Container from '../../components/Container/Container';
 import { colors } from '../../theme/colors';
+import Button from '../../components/Button/Button';
 const Home = () => {
   return (
     <Container>
@@ -21,10 +22,16 @@ const Home = () => {
           <Text style={style.title}>Here!</Text>
         </View>
         <View style={style.buttonsContainer}>
-          <TouchableOpacity>
-            <Text>sign up</Text>
-            <Text>sign in</Text>
-          </TouchableOpacity>
+          <Button
+            title={'sign up'}
+            bgColor={colors.black}
+            txColor={colors.white}
+          />
+          <Button
+            title={'sign in'}
+            bgColor={colors.white}
+            txColor={colors.black}
+          />
         </View>
       </View>
     </Container>
