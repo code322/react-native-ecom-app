@@ -10,6 +10,7 @@ import InputField from '../../components/InputField/InputField';
 import Button from '../../components/Button/Button';
 import axios from 'axios';
 import EnvironmentVariables from '../../helpers/api';
+import * as SecureStore from 'expo-secure-store';
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -25,6 +26,7 @@ const SignIn = ({ navigation }) => {
           'Content-Type': 'application/json',
         },
       });
+      await SecureStore.setItemAsync('token', data.token);
     } catch (error) {
       console.log(error.message, error.response.data);
     }
