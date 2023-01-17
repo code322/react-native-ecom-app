@@ -52,3 +52,5 @@ const getUser = async (email) => {
     return error;
   }
 };
+
+module.exports = { signUp };
