@@ -3,7 +3,7 @@ import React from 'react';
 import { style } from './Style';
 import { colors } from '../../theme/colors';
 import Button from '../../components/Button/Button';
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
     <View style={style.container}>
       <Image source={require('../../assets/images/hero.png')} />
@@ -24,11 +24,13 @@ const Home = () => {
           title={'sign up'}
           bgColor={colors.black}
           txColor={colors.white}
+          handlePress={() => navigation.push('SignUp')}
         />
         <Button
           title={'sign in'}
           bgColor={colors.white}
           txColor={colors.black}
+          handlePress={() => navigation.push('SignIn')}
         />
       </View>
     </View>

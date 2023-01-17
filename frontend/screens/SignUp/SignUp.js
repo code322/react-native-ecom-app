@@ -9,7 +9,7 @@ import Button from '../../components/Button/Button';
 import { styles } from './Style';
 import { colors } from '../../theme/colors';
 
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
   return (
     <Container>
       <View style={styles.navContainer}>
