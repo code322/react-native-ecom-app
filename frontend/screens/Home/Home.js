@@ -6,35 +6,33 @@ import { colors } from '../../theme/colors';
 import Button from '../../components/Button/Button';
 const Home = () => {
   return (
-    <Container>
-      <View style={style.container}>
-        <Image source={require('../../assets/images/hero.png')} />
-        <View style={style.titleContainer}>
-          <Text style={style.title}>You'll Find</Text>
-          <Text
-            style={[
-              style.title,
-              { color: colors.orange, textDecorationLine: 'underline' },
-            ]}
-          >
-            All You Need
-          </Text>
-          <Text style={style.title}>Here!</Text>
-        </View>
-        <View style={style.buttonsContainer}>
-          <Button
-            title={'sign up'}
-            bgColor={colors.black}
-            txColor={colors.white}
-          />
-          <Button
-            title={'sign in'}
-            bgColor={colors.white}
-            txColor={colors.black}
-          />
-        </View>
+    <View style={style.container}>
+      <Image source={require('../../assets/images/hero.png')} />
+      <View style={style.titleContainer}>
+        <Text style={style.title}>You'll Find</Text>
+        <Text
+          style={[
+            style.title,
+            { color: colors.orange, textDecorationLine: 'underline' },
+          ]}
+        >
+          All You Need
+        </Text>
+        <Text style={style.title}>Here!</Text>
       </View>
-    </Container>
+      <View style={style.buttonsContainer}>
+        <Button
+          title={'sign up'}
+          bgColor={colors.black}
+          txColor={colors.white}
+        />
+        <Button
+          title={'sign in'}
+          bgColor={colors.white}
+          txColor={colors.black}
+        />
+      </View>
+    </View>
   );
 };
 

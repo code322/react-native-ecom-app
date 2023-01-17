@@ -6,6 +6,7 @@ export const style = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: colors.white,
+    paddingHorizontal: 20,
   },
   titleContainer: {
     marginTop: 30,
