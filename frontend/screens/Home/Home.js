@@ -1,7 +1,6 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { style } from './Style';
-import Container from '../../components/Container/Container';
 import { colors } from '../../theme/colors';
 import Button from '../../components/Button/Button';
 const Home = () => {

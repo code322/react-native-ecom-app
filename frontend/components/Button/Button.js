@@ -1,7 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { style } from './Style';
-import { colors } from '../../theme/colors';
 
 const Button = ({ title, bgColor, txColor }) => {
   return (
