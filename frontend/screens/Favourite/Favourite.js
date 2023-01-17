@@ -20,6 +20,8 @@ const Favourites = () => {
     />
   );
 
+  //remove the margin bottom bug from the bottom tab for ios
+
   let insets = useSafeAreaInsets();
   let bottomTab;
   if (Platform.OS === 'android') {

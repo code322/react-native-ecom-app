@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Tabs } from './navigation/Tabs';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
+import Home from './screens/Home/Home';
 
 export default function App() {
   let persistor = persistStore(store);
@@ -19,6 +20,7 @@ export default function App() {
           <SafeAreaProvider>
             <StatusBar style='auto' />
             <Stack.Navigator screenOptions={{ headerShown: false }}>
+              <Stack.Screen name='Home' component={Home} />
               <Stack.Screen name='Tabs' component={Tabs} />
             </Stack.Navigator>
           </SafeAreaProvider>
