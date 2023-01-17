@@ -11,4 +11,8 @@ export const styles = StyleSheet.create({
     marginLeft: 10,
     textTransform: 'capitalize',
   },
+  errorMessage: {
+    textAlign: 'center',
+    marginTop: 5,
+  },
 });

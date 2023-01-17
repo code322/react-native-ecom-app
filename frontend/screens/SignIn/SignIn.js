@@ -15,11 +15,14 @@ import * as SecureStore from 'expo-secure-store';
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState();
+
   const API_URL = EnvironmentVariables.API_URL;
 
   const handleSignIn = async () => {
+    setError();
     const body = { email: email, password: password };
-    console.log(body);
+
     try {
       const { data } = await axios.post(`${API_URL}/api/auth/signin`, body, {
         headers: {
@@ -28,7 +31,7 @@ const SignIn = ({ navigation }) => {
       });
       await SecureStore.setItemAsync('token', data.token);
     } catch (error) {
-      console.log(error.message, error.response.data);
+      setError(error.response.data.message);
     }
   };
   return (
@@ -65,6 +68,7 @@ const SignIn = ({ navigation }) => {
             txColor={colors.white}
             handlePress={handleSignIn}
           />
+          {error && <Text style={styles.errorMessage}>{error}</Text>}
         </ScrollView>
       </FormContainer>
     </Container>
