@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import Container from '../../components/Container/Container';
 import { Ionicons } from '@expo/vector-icons';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
@@ -10,6 +10,9 @@ import InputField from '../../components/InputField/InputField';
 import Button from '../../components/Button/Button';
 
 const SignIn = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  console.log(email, password);
   return (
     <Container>
       <View style={styles.navContainer}>
@@ -24,11 +27,18 @@ const SignIn = ({ navigation }) => {
       <FormContainer>
         <ScrollView keyboardShouldPersistTaps={'handled'}>
           <View>
-            <InputField label={'e-mail'} placeholder={'example@gmail.com'} />
+            <InputField
+              label={'e-mail'}
+              placeholder={'example@gmail.com'}
+              input={email}
+              handleChange={(value) => setEmail(value)}
+            />
             <InputField
               label={'password'}
               type={'password'}
               placeholder={'*****'}
+              input={password}
+              handleChange={(value) => setPassword(value)}
             />
           </View>
           <Button

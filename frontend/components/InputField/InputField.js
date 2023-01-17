@@ -11,7 +11,7 @@ import { styles } from './Style';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../../theme/colors';
 
-const InputField = ({ label, placeholder, type }) => {
+const InputField = ({ label, placeholder, type, input, handleChange }) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <View style={styles.container}>
@@ -22,6 +22,8 @@ const InputField = ({ label, placeholder, type }) => {
           placeholder={placeholder}
           textContentType={'text' || type}
           secureTextEntry={type === 'password' ? !showPassword : false}
+          value={input}
+          onChangeText={handleChange}
         />
         {type === 'password' && (
           <TouchableOpacity
