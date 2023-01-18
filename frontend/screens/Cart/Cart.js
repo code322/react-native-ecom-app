@@ -32,7 +32,7 @@ const Cart = ({ navigation }) => {
     return (
       <View style={style.emptyCartContainer}>
         <Ionicons name='ios-cart-outline' size={104} color='black' />
-        <Text style={style.emptyCartTitle}>Your cart is empty</Text>
+        <Text style={style.emptyCartTitle}>Your cart is empty!</Text>
         <TouchableOpacity
           activeOpacity={0.8}
           style={style.shopNow}

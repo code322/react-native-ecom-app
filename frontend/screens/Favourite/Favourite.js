@@ -29,6 +29,14 @@ const Favourites = () => {
   } else {
     bottomTab = -insets.bottom;
   }
+
+  if (favourites.length < 1) {
+    return (
+      <View style={style.noFavouritesContainer}>
+        <Text>No favourites yet!</Text>
+      </View>
+    );
+  }
   return (
     <Container>
       <Text style={style.header}>Favourites</Text>
