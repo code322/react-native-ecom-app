@@ -6,10 +6,9 @@ export const style = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingBottom: 20,
     borderBottomColor: colors.mediumGray,
     borderBottomWidth: 1,
-    marginTop: 30,
+    paddingVertical: 25,
   },
   title: {
     textAlign: 'center',

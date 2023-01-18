@@ -5,8 +5,11 @@ import Container from '../../components/Container/Container';
 import { MaterialIcons } from '@expo/vector-icons';
 import { colors } from '../../theme/colors';
 import { settingList } from '../../data/settingList';
+import { useDispatch } from 'react-redux';
+import { signOut } from '../../state/authSlice';
 
 const Setting = () => {
+  const dispatch = useDispatch();
   return (
     <Container>
       <Text style={style.title}>Settings</Text>
@@ -17,6 +20,9 @@ const Setting = () => {
               key={index}
               title={setting.title}
               icon={setting.icon}
+              handlePress={
+                setting.title === 'logout' ? () => dispatch(signOut()) : {}
+              }
             />
           ))}
         </>
