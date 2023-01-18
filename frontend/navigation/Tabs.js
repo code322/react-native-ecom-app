@@ -82,7 +82,7 @@ export const Tabs = () => {
             <AntDesign
               name='setting'
               size={24}
-              color={focused ? colors.black : colors.blue}
+              color={focused ? colors.blue : colors.black}
             />
           ),
           tabBarActiveTintColor: colors.blue,
