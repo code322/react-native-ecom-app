@@ -11,19 +11,22 @@ const initialState = {
 };
 const API_URL = EnvironmentVariables.API_URL;
 
-export const signIn = createAsyncThunk('auth/signIn', async (body) => {
-  try {
-    const { data } = await axios.post(`${API_URL}/api/auth/signin`, body, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    await SecureStore.setItemAsync('token', data.token);
-    return data;
-  } catch (error) {
-    return rejectWithValue(error.response.data.message);
+export const signIn = createAsyncThunk(
+  'auth/signIn',
+  async (body, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post(`${API_URL}/api/auth/signin`, body, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      await SecureStore.setItemAsync('token', data.token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
   }
-});
+);
 export const signUp = createAsyncThunk('auth/signIn', async (body) => {
   try {
     const { data } = await axios.post(`${API_URL}/api/auth/signup`, body, {
@@ -58,6 +61,7 @@ const authSlice = createSlice({
       .addMatcher(isAnyOf(signIn.pending, signUp.pending), (state) => {
         state.status = 'loading';
         state.isLoggedIn = false;
+        state.error = null;
       })
       .addMatcher(
         isAnyOf(signIn.fulfilled, signUp.fulfilled),
@@ -65,6 +69,7 @@ const authSlice = createSlice({
           state.status = 'succeeded';
           state.isLoggedIn = true;
           state.user = action.payload;
+          state.error = null;
         }
       )
       .addMatcher(

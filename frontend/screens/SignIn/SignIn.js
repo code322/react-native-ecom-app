@@ -8,31 +8,20 @@ import { styles } from './Style';
 import FormContainer from '../../components/FormContainer/FormContainer';
 import InputField from '../../components/InputField/InputField';
 import Button from '../../components/Button/Button';
-import axios from 'axios';
-import EnvironmentVariables from '../../helpers/api';
-import * as SecureStore from 'expo-secure-store';
+import { useSelector, useDispatch } from 'react-redux';
+import { signIn } from '../../state/authSlice';
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState();
 
-  const API_URL = EnvironmentVariables.API_URL;
+  const dispatch = useDispatch();
+
+  const { isLoggedIn, error, status } = useSelector((state) => state.authSlice);
 
   const handleSignIn = async () => {
-    setError();
-    const body = { email: email, password: password };
-
-    try {
-      const { data } = await axios.post(`${API_URL}/api/auth/signin`, body, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      await SecureStore.setItemAsync('token', data.token);
-    } catch (error) {
-      setError(error.response.data.message);
-    }
+    const body = { email, password };
+    dispatch(signIn(body));
   };
   return (
     <Container>
