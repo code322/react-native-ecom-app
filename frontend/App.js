@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import store from './state/store';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
@@ -9,29 +9,34 @@ import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { AuthNav } from './navigation/AuthNav';
-import { useState } from 'react';
+
+const RootNavigation = () => {
+  const Stack = createStackNavigator();
+  const { isLoggedIn } = useSelector((state) => state.authSlice);
+  return (
+    <NavigationContainer>
+      <SafeAreaProvider>
+        <StatusBar style='auto' />
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {isLoggedIn ? (
+            <Stack.Screen name='Tabs' component={Tabs} />
+          ) : (
+            <Stack.Screen name='AuthNav' component={AuthNav} />
+          )}
+        </Stack.Navigator>
+      </SafeAreaProvider>
+    </NavigationContainer>
+  );
+};
 
 export default function App() {
   let persistor = persistStore(store);
-  const Stack = createStackNavigator();
-  const [isAuth, setIsAuth] = useState(false);
 
   return (
-    <NavigationContainer>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <SafeAreaProvider>
-            <StatusBar style='auto' />
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-              {isAuth ? (
-                <Stack.Screen name='Tabs' component={Tabs} />
-              ) : (
-                <Stack.Screen name='AuthNav' component={AuthNav} />
-              )}
-            </Stack.Navigator>
-          </SafeAreaProvider>
-        </PersistGate>
-      </Provider>
-    </NavigationContainer>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <RootNavigation />
+      </PersistGate>
+    </Provider>
   );
 }
