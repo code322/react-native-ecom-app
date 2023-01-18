@@ -34,15 +34,17 @@ export const style = StyleSheet.create({
     color: colors.black,
     fontSize: 30,
     textTransform: 'capitalize',
+    fontWeight: '600',
+    opacity: 0.8,
   },
   price: {
     fontSize: 30,
     fontWeight: 'bold',
-    marginTop: 10,
+    marginTop: 5,
   },
   description: {
-    fontSize: 20,
-    marginTop: 30,
+    fontSize: 18,
+    marginTop: 20,
     opacity: 0.7,
   },
   buttonsContainer: {

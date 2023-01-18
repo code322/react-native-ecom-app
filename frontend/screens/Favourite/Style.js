@@ -16,7 +16,6 @@ export const style = StyleSheet.create({
     alignItems: 'center',
   },
   emptyCartTitle: {
-    // fontWeight: 'bold',
     marginTop: -10,
   },
   shopNow: {
