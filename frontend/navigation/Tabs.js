@@ -9,6 +9,8 @@ import Cart from '../screens/Cart/Cart';
 import { Fontisto } from '@expo/vector-icons';
 import { colors } from '../theme/colors';
 import Favourites from '../screens/Favourite/Favourite';
+import Setting from '../screens/Setting/Setting';
+import { AntDesign } from '@expo/vector-icons';
 
 const ProductsTab = () => {
   const ProductsStack = createStackNavigator();
@@ -73,6 +75,21 @@ export const Tabs = () => {
         }}
         name='Cart'
         component={Cart}
+      />
+      <TabsStack.Screen
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <AntDesign
+              name='setting'
+              size={24}
+              color={focused ? colors.black : colors.blue}
+            />
+          ),
+          tabBarActiveTintColor: colors.blue,
+          tabBarInactiveTintColor: colors.black,
+        }}
+        name='Setting'
+        component={Setting}
       />
     </TabsStack.Navigator>
   );
