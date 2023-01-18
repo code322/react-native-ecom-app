@@ -7,12 +7,14 @@ import cartSlice from './cartSlice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
+import authSlice from './authSlice';
 
 const reducers = combineReducers({
   productsSlice,
   productSlice,
   cartSlice,
   favouriteSlice,
+  authSlice,
 });
 const persistConfig = {
   key: 'root',
