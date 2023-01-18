@@ -2,39 +2,10 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { style } from './Style';
 import Container from '../../components/Container/Container';
-import { MaterialIcons, AntDesign, Ionicons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import { colors } from '../../theme/colors';
+import { settingList } from '../../data/settingList';
 
-const settingList = [
-  {
-    title: 'message',
-    icon: <AntDesign name='message1' size={24} color={colors.gray} />,
-  },
-  {
-    title: 'notifications',
-    icon: (
-      <Ionicons
-        name='ios-notifications-outline'
-        size={24}
-        color={colors.gray}
-      />
-    ),
-  },
-  {
-    title: 'about',
-    icon: (
-      <Ionicons
-        name='ios-information-circle-outline'
-        size={24}
-        color={colors.gray}
-      />
-    ),
-  },
-  {
-    title: 'logout',
-    icon: <AntDesign name='logout' size={24} color={colors.gray} />,
-  },
-];
 const Setting = () => {
   return (
     <Container>
