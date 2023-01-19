@@ -21,7 +21,9 @@ const Setting = () => {
               title={setting.title}
               icon={setting.icon}
               handlePress={
-                setting.title === 'logout' ? () => dispatch(signOut()) : {}
+                setting.title === 'logout'
+                  ? () => dispatch(signOut())
+                  : () => {}
               }
             />
           ))}
