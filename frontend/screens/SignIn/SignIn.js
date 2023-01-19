@@ -20,9 +20,11 @@ const SignIn = ({ navigation }) => {
   const { isLoggedIn, error, status } = useSelector((state) => state.authSlice);
 
   const handleSignIn = async () => {
-    const body = { email, password };
+    const body = { email: email, password: password };
     dispatch(signIn(body));
   };
+
+  console.log(error);
   return (
     <Container>
       <View style={styles.navContainer}>

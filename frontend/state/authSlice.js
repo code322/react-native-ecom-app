@@ -27,37 +27,51 @@ export const signIn = createAsyncThunk(
     }
   }
 );
-export const signUp = createAsyncThunk('auth/signIn', async (body) => {
-  try {
-    const { data } = await axios.post(`${API_URL}/api/auth/signup`, body, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    await SecureStore.setItemAsync('token', data.token);
-    return data;
-  } catch (error) {
-    return rejectWithValue(error.response.data.message);
+export const signUp = createAsyncThunk(
+  'auth/signIn',
+  async (body, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post(`${API_URL}/api/auth/signup`, body, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      await SecureStore.setItemAsync('token', data.token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
   }
-});
+);
+
+export const signOut = createAsyncThunk(
+  'auth/signOut',
+  async (_, { rejectWithValue }) => {
+    try {
+      await SecureStore.deleteItemAsync('token');
+      return;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
 
 const authSlice = createSlice({
   name: 'signIn',
   initialState,
-  reducers: {
-    signOut: async (state, action) => {
-      await SecureStore.deleteItemAsync('token');
-      return {
-        ...state,
-        isLoggedIn: false,
-        user: {},
-        error: null,
-        status: 'idle',
-      };
-    },
-  },
   extraReducers: (build) => {
     build
+      .addCase(signOut.fulfilled, (state, action) => {
+        state.isLoggedIn = false;
+        state.user = {};
+        state.error = null;
+        state.status = 'succeeded';
+      })
+      .addCase(signOut.rejected, (state, action) => {
+        state.isLoggedIn = true;
+        state.error = null;
+        state.status = 'failed';
+      })
       .addMatcher(isAnyOf(signIn.pending, signUp.pending), (state) => {
         state.status = 'loading';
         state.isLoggedIn = false;
@@ -86,4 +100,4 @@ const authSlice = createSlice({
 
 export default authSlice.reducer;
 
-export const { signOut } = authSlice.actions;
+// export const { signOut } = authSlice.actions;
