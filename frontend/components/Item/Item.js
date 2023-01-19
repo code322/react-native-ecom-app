@@ -4,7 +4,11 @@ import { style } from './Style';
 import { AntDesign } from '@expo/vector-icons';
 import { convertToDollars } from '../../helpers/tools';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { removeItem } from '../../state/cartSlice';
+import {
+  decrementQuantity,
+  incrementQuantity,
+  removeItem,
+} from '../../state/cartSlice';
 import { useDispatch } from 'react-redux';
 import { removeFromFav } from '../../state/FavouriteSlice';
 import { Ionicons } from '@expo/vector-icons';
@@ -14,6 +18,31 @@ const Item = ({ ...props }) => {
   const { price, title, image, id, screen, quantity } = props;
   const dispatch = useDispatch();
   let cost = convertToDollars(price);
+
+  const adjustQuantity = () => (
+    <View style={style.quantityContainer}>
+      <TouchableOpacity
+        onPress={() => {
+          if (quantity > 1) {
+            dispatch(decrementQuantity(id));
+          }
+        }}
+        activeOpacity={0.7}
+        style={style.adjustQuantity}
+      >
+        <Ionicons name='chevron-back' size={24} color={colors.gray} />
+      </TouchableOpacity>
+      <Text style={style.quantity}>{quantity}</Text>
+      <TouchableOpacity
+        onPress={() => dispatch(incrementQuantity(id))}
+        activeOpacity={0.7}
+        style={style.adjustQuantity}
+      >
+        <Ionicons name='chevron-forward' size={24} color={colors.gray} />
+      </TouchableOpacity>
+    </View>
+  );
+
   return (
     <View style={style.itemContainer}>
       <View style={style.item}>
@@ -26,7 +55,7 @@ const Item = ({ ...props }) => {
         <View>
           <Text style={style.title}>{title}</Text>
           <Text style={style.price}>{cost}</Text>
-          {screen === 'cart' ? <Quantity quantity={quantity} /> : ''}
+          {screen === 'cart' ? adjustQuantity() : ''}
         </View>
       </View>
       <TouchableOpacity
@@ -44,17 +73,3 @@ const Item = ({ ...props }) => {
 };
 
 export default Item;
-
-const Quantity = ({ quantity }) => {
-  return (
-    <View style={style.quantityContainer}>
-      <TouchableOpacity activeOpacity={0.7} style={style.adjustQuantity}>
-        <Ionicons name='chevron-back' size={24} color={colors.gray} />
-      </TouchableOpacity>
-      <Text style={style.quantity}>{quantity}</Text>
-      <TouchableOpacity activeOpacity={0.7} style={style.adjustQuantity}>
-        <Ionicons name='chevron-forward' size={24} color={colors.gray} />
-      </TouchableOpacity>
-    </View>
-  );
-};
