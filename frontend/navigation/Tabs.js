@@ -1,16 +1,12 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Products from '../screens/Products/Products';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Entypo } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
-
+import { Entypo, Ionicons, Fontisto, FontAwesome } from '@expo/vector-icons';
 import Product from '../screens/Product/Product';
 import Cart from '../screens/Cart/Cart';
-import { Fontisto } from '@expo/vector-icons';
 import { colors } from '../theme/colors';
 import Favourites from '../screens/Favourite/Favourite';
 import Setting from '../screens/Setting/Setting';
-import { AntDesign } from '@expo/vector-icons';
 
 const ProductsTab = () => {
   const ProductsStack = createStackNavigator();
@@ -36,12 +32,12 @@ export const Tabs = () => {
             <Entypo
               name='shopping-bag'
               size={24}
-              color={focused ? colors.blue : colors.black}
+              color={focused ? colors.black : colors.gray}
             />
           ),
           title: 'Products',
-          tabBarActiveTintColor: colors.blue,
-          tabBarInactiveTintColor: colors.black,
+          tabBarActiveTintColor: colors.black,
+          tabBarInactiveTintColor: colors.gray,
         }}
         name='ProductsTab'
         component={ProductsTab}
@@ -52,11 +48,12 @@ export const Tabs = () => {
             <Fontisto
               name='favorite'
               size={24}
-              color={focused ? colors.blue : colors.black}
+              color={focused ? colors.black : colors.gray}
             />
           ),
-          tabBarActiveTintColor: colors.blue,
-          tabBarInactiveTintColor: colors.black,
+          title: 'Favourite',
+          tabBarActiveTintColor: colors.black,
+          tabBarInactiveTintColor: colors.gray,
         }}
         name='FavouritesTab'
         component={Favourites}
@@ -67,11 +64,11 @@ export const Tabs = () => {
             <FontAwesome
               name='shopping-cart'
               size={24}
-              color={focused ? colors.blue : colors.black}
+              color={focused ? colors.black : colors.gray}
             />
           ),
-          tabBarActiveTintColor: colors.blue,
-          tabBarInactiveTintColor: colors.black,
+          tabBarActiveTintColor: colors.black,
+          tabBarInactiveTintColor: colors.gray,
         }}
         name='Cart'
         component={Cart}
@@ -79,14 +76,14 @@ export const Tabs = () => {
       <TabsStack.Screen
         options={{
           tabBarIcon: ({ focused }) => (
-            <AntDesign
-              name='setting'
+            <Ionicons
+              name='settings'
               size={24}
-              color={focused ? colors.blue : colors.black}
+              color={focused ? colors.black : colors.gray}
             />
           ),
-          tabBarActiveTintColor: colors.blue,
-          tabBarInactiveTintColor: colors.black,
+          tabBarActiveTintColor: colors.black,
+          tabBarInactiveTintColor: colors.gray,
         }}
         name='Setting'
         component={Setting}
