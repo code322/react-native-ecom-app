@@ -26,4 +26,16 @@ export const style = StyleSheet.create({
   price: {
     fontWeight: 'bold',
   },
+  quantityContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  adjustQuantity: {
+    backgroundColor: colors.lightGray,
+    borderRadius: 5,
+  },
+  quantity: {
+    marginHorizontal: 10,
+  },
 });

@@ -7,9 +7,11 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { removeItem } from '../../state/cartSlice';
 import { useDispatch } from 'react-redux';
 import { removeFromFav } from '../../state/FavouriteSlice';
+import { Ionicons } from '@expo/vector-icons';
+import { colors } from '../../theme/colors';
 
 const Item = ({ ...props }) => {
-  const { price, title, image, id, screen } = props;
+  const { price, title, image, id, screen, quantity } = props;
   const dispatch = useDispatch();
   let cost = convertToDollars(price);
   return (
@@ -24,6 +26,7 @@ const Item = ({ ...props }) => {
         <View>
           <Text style={style.title}>{title}</Text>
           <Text style={style.price}>{cost}</Text>
+          {screen === 'cart' ? <Quantity quantity={quantity} /> : ''}
         </View>
       </View>
       <TouchableOpacity
@@ -41,3 +44,17 @@ const Item = ({ ...props }) => {
 };
 
 export default Item;
+
+const Quantity = ({ quantity }) => {
+  return (
+    <View style={style.quantityContainer}>
+      <TouchableOpacity activeOpacity={0.7} style={style.adjustQuantity}>
+        <Ionicons name='chevron-back' size={24} color={colors.gray} />
+      </TouchableOpacity>
+      <Text style={style.quantity}>{quantity}</Text>
+      <TouchableOpacity activeOpacity={0.7} style={style.adjustQuantity}>
+        <Ionicons name='chevron-forward' size={24} color={colors.gray} />
+      </TouchableOpacity>
+    </View>
+  );
+};

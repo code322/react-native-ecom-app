@@ -9,6 +9,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Cart = ({ navigation }) => {
   const { cart } = useSelector((state) => state.cartSlice);
+  console.log(cart.quantity);
 
   const renderCart = ({ item }) => (
     <CartItem
@@ -16,6 +17,7 @@ const Cart = ({ navigation }) => {
       price={item.price}
       image={item.images[0]}
       id={item._id}
+      quantity={item.quantity}
       screen='cart'
     />
   );
