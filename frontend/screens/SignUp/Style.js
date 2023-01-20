@@ -11,4 +11,12 @@ export const styles = StyleSheet.create({
     marginLeft: 10,
     textTransform: 'capitalize',
   },
+  container: {
+    flex: 1,
+    marginBottom: 30,
+  },
+  image: {
+    width: '100%',
+    height: 300,
+  },
 });

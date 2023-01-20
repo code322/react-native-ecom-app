@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React, { useState } from 'react';
 import Container from '../../components/Container/Container';
 import { Ionicons } from '@expo/vector-icons';
@@ -10,6 +10,7 @@ import { styles } from './Style';
 import { colors } from '../../theme/colors';
 import { useDispatch, useSelector } from 'react-redux';
 import { signUp } from '../../state/authSlice';
+import Login from '../../assets/images/login.svg';
 
 const SignUp = ({ navigation }) => {
   const [name, setName] = useState('');
@@ -24,7 +25,6 @@ const SignUp = ({ navigation }) => {
     const body = { name, email, password };
     dispatch(signUp(body));
   };
-
   return (
     <Container>
       <View style={styles.navContainer}>
@@ -37,34 +37,45 @@ const SignUp = ({ navigation }) => {
         <Text style={styles.navTitle}>Sign Up</Text>
       </View>
       <FormContainer>
-        <ScrollView keyboardShouldPersistTaps={'handled'}>
-          <View>
-            <InputField
-              label={'name'}
-              placeholder={'John Smith'}
-              input={name}
-              handleChange={(value) => setName(value)}
-            />
-            <InputField
-              label={'e-mail'}
-              placeholder={'example@gmail.com'}
-              input={email}
-              handleChange={(value) => setEmail(value)}
-            />
-            <InputField
-              label={'password'}
-              type={'password'}
-              placeholder={'*****'}
-              input={password}
-              handleChange={(value) => setPassword(value)}
+        <ScrollView
+          keyboardShouldPersistTaps={'handled'}
+          showsVerticalScrollIndicator={false}
+        >
+          <View style={styles.container}>
+            <View>
+              <Image
+                style={styles.image}
+                source={require('../../assets/images/login.png')}
+              />
+            </View>
+            <View>
+              <InputField
+                label={'name'}
+                placeholder={'John Smith'}
+                input={name}
+                handleChange={(value) => setName(value)}
+              />
+              <InputField
+                label={'e-mail'}
+                placeholder={'example@gmail.com'}
+                input={email}
+                handleChange={(value) => setEmail(value)}
+              />
+              <InputField
+                label={'password'}
+                type={'password'}
+                placeholder={'*****'}
+                input={password}
+                handleChange={(value) => setPassword(value)}
+              />
+            </View>
+            <Button
+              title={'sign up'}
+              bgColor={colors.black}
+              txColor={colors.white}
+              handlePress={handleSignUp}
             />
           </View>
-          <Button
-            title={'sign up'}
-            bgColor={colors.black}
-            txColor={colors.white}
-            handlePress={handleSignUp}
-          />
           {error && <Text style={styles.errorMessage}>{error}</Text>}
         </ScrollView>
       </FormContainer>
