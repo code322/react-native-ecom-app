@@ -37,8 +37,8 @@ export const style = StyleSheet.create({
     fontWeight: 'bold',
   },
   price: {
-    fontSize: 25,
-    fontWeight: '500',
+    fontSize: 20,
+    fontWeight: '600',
     color: colors.black,
     opacity: 0.7,
   },
