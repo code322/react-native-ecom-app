@@ -44,7 +44,7 @@ export const style = StyleSheet.create({
   },
   description: {
     fontSize: 16,
-    marginTop: 20,
+    marginTop: 15,
     opacity: 0.7,
   },
   buttonsContainer: {
