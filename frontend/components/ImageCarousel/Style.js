@@ -3,9 +3,16 @@ import { colors } from '../../theme/colors';
 
 const { height, width } = Dimensions.get('window');
 export const styles = StyleSheet.create({
-  image: {
+  imageContainer: {
     width: width,
-    height: height * 0.45,
+    height: height * 0.55,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.white,
+  },
+  image: {
+    width: '80%',
+    height: '80%',
   },
 
   pagination: {

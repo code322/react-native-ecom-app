@@ -17,7 +17,11 @@ const ImageCarousel = ({ image }) => {
   };
 
   const renderImage = ({ item }) => {
-    return <Image style={styles.image} source={{ uri: item }} />;
+    return (
+      <View style={styles.imageContainer}>
+        <Image style={styles.image} source={{ uri: item }} />
+      </View>
+    );
   };
 
   return (
@@ -31,7 +35,7 @@ const ImageCarousel = ({ image }) => {
         viewabilityConfig={_viewabilityConfig}
         showsHorizontalScrollIndicator={false}
       />
-      {image?.length > 1 && (
+      {image.length > 1 && (
         <View style={styles.pagination}>
           {image.map((_, i) => (
             <View
