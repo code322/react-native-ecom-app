@@ -75,8 +75,8 @@ const SignUp = ({ navigation }) => {
               txColor={colors.white}
               handlePress={handleSignUp}
             />
+            {error && <Text style={styles.errorMessage}>{error}</Text>}
           </View>
-          {error && <Text style={styles.errorMessage}>{error}</Text>}
         </ScrollView>
       </FormContainer>
     </Container>
