@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import React, { useState } from 'react';
 import Container from '../../components/Container/Container';
 import { Ionicons } from '@expo/vector-icons';
@@ -37,29 +37,40 @@ const SignIn = ({ navigation }) => {
         <Text style={styles.navTitle}>Sign In</Text>
       </View>
       <FormContainer>
-        <ScrollView keyboardShouldPersistTaps={'handled'}>
-          <View>
-            <InputField
-              label={'e-mail'}
-              placeholder={'example@gmail.com'}
-              input={email}
-              handleChange={(value) => setEmail(value)}
-            />
-            <InputField
-              label={'password'}
-              type={'password'}
-              placeholder={'*****'}
-              input={password}
-              handleChange={(value) => setPassword(value)}
-            />
+        <ScrollView
+          keyboardShouldPersistTaps={'handled'}
+          showsVerticalScrollIndicator={false}
+        >
+          <View style={styles.container}>
+            <View>
+              <Image
+                style={styles.image}
+                source={require('../../assets/images/login.png')}
+              />
+            </View>
+            <View>
+              <InputField
+                label={'e-mail'}
+                placeholder={'example@gmail.com'}
+                input={email}
+                handleChange={(value) => setEmail(value)}
+              />
+              <InputField
+                label={'password'}
+                type={'password'}
+                placeholder={'*****'}
+                input={password}
+                handleChange={(value) => setPassword(value)}
+              />
+              <Button
+                title={'sign in'}
+                bgColor={colors.black}
+                txColor={colors.white}
+                handlePress={handleSignIn}
+              />
+              {error && <Text style={styles.errorMessage}>{error}</Text>}
+            </View>
           </View>
-          <Button
-            title={'sign in'}
-            bgColor={colors.black}
-            txColor={colors.white}
-            handlePress={handleSignIn}
-          />
-          {error && <Text style={styles.errorMessage}>{error}</Text>}
         </ScrollView>
       </FormContainer>
     </Container>

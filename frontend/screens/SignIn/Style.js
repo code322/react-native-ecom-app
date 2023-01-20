@@ -15,4 +15,15 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 5,
   },
+
+  container: {
+    height: '100%',
+    flexDirection: 'column',
+    marginBottom: 30,
+    justifyContent: 'space-between',
+  },
+  image: {
+    width: '100%',
+    height: 300,
+  },
 });
