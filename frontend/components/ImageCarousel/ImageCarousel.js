@@ -29,8 +29,8 @@ const ImageCarousel = ({ image }) => {
       <FlatList
         data={image}
         renderItem={renderImage}
-        pagingEnabled
-        horizontal
+        pagingEnabled={true}
+        horizontal={true}
         onViewableItemsChanged={_onViewableItemsChanged}
         viewabilityConfig={_viewabilityConfig}
         showsHorizontalScrollIndicator={false}

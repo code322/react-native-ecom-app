@@ -11,8 +11,9 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   image: {
-    width: '80%',
-    height: '80%',
+    flex: 1,
+    aspectRatio: 0.8,
+    resizeMode: 'contain',
   },
 
   pagination: {

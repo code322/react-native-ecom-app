@@ -6,9 +6,10 @@ export const style = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 200,
+    height: 170,
     borderRadius: 10,
     marginBottom: 5,
+    padding: 20,
   },
   title: {
     color: colors.black,
