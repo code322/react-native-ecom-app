@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../theme/colors';
 export const style = StyleSheet.create({
   button: {
     height: 55,
@@ -6,6 +7,8 @@ export const style = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     marginTop: 10,
+    borderColor: colors.black,
+    borderWidth: 1,
   },
   title: {
     textAlign: 'center',

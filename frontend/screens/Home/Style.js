@@ -4,20 +4,15 @@ import { colors } from '../../theme/colors';
 export const style = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     backgroundColor: colors.white,
     paddingHorizontal: 20,
   },
-  titleContainer: {
-    marginTop: 30,
-  },
-  title: {
-    fontSize: 40,
+  message: {
+    fontSize: 30,
     fontWeight: 'bold',
-    color: colors.black,
-    textAlign: 'center',
   },
   buttonsContainer: {
-    marginTop: 40,
+    marginTop: 10,
   },
 });
