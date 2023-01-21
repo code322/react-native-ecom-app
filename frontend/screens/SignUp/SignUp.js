@@ -11,6 +11,7 @@ import { colors } from '../../theme/colors';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearError, signUp } from '../../state/authSlice';
 import Login from '../../assets/images/login.svg';
+import { validEmail, validInput } from '../../helpers/tools';
 
 const SignUp = ({ navigation }) => {
   const [name, setName] = useState('');
@@ -21,9 +22,17 @@ const SignUp = ({ navigation }) => {
 
   const { error } = useSelector((state) => state.authSlice);
 
+  let valPassword = validInput(password);
+  let valEmail = validEmail(email);
+  let valName = validInput(name);
+
+  let disableButton = valEmail && valPassword && valName;
+
   const handleSignUp = async () => {
     const body = { name, email, password };
-    dispatch(signUp(body));
+    if (valPassword && valEmail && valName) {
+      dispatch(signUp(body));
+    }
   };
 
   useEffect(() => {
@@ -79,6 +88,7 @@ const SignUp = ({ navigation }) => {
               bgColor={colors.black}
               txColor={colors.white}
               handlePress={handleSignUp}
+              disableButton={!disableButton}
             />
             {error && <Text style={styles.errorMessage}>{error}</Text>}
           </View>

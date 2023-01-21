@@ -7,7 +7,6 @@ export const style = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     marginTop: 10,
-    borderColor: colors.black,
     borderWidth: 1,
   },
   title: {

@@ -10,6 +10,7 @@ import InputField from '../../components/InputField/InputField';
 import Button from '../../components/Button/Button';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearError, signIn } from '../../state/authSlice';
+import { validEmail, validInput } from '../../helpers/tools';
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -23,9 +24,15 @@ const SignIn = ({ navigation }) => {
     dispatch(clearError());
   }, [email, password]);
 
+  let valPassword = validInput(password);
+  let valEmail = validEmail(email);
+
+  let disableButton = valEmail && valPassword;
   const handleSignIn = async () => {
-    const body = { email: email, password: password };
-    dispatch(signIn(body));
+    const body = { email, password };
+    if (valPassword && valEmail) {
+      dispatch(signIn(body));
+    }
   };
 
   return (
@@ -70,6 +77,7 @@ const SignIn = ({ navigation }) => {
                 bgColor={colors.black}
                 txColor={colors.white}
                 handlePress={handleSignIn}
+                disableButton={!disableButton}
               />
               {error && <Text style={styles.errorMessage}>{error}</Text>}
             </View>
