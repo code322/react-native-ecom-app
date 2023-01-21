@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from '../../components/Container/Container';
 import { Ionicons } from '@expo/vector-icons';
 import FormContainer from '../../components/FormContainer/FormContainer';
@@ -25,6 +25,10 @@ const SignUp = ({ navigation }) => {
     const body = { name, email, password };
     dispatch(signUp(body));
   };
+
+  useEffect(() => {
+    dispatch(clearError());
+  }, [email, password, name]);
   return (
     <Container>
       <View style={styles.navContainer}>

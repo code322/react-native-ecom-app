@@ -1,5 +1,5 @@
 import { View, Text, Image } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from '../../components/Container/Container';
 import { Ionicons } from '@expo/vector-icons';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
@@ -9,7 +9,7 @@ import FormContainer from '../../components/FormContainer/FormContainer';
 import InputField from '../../components/InputField/InputField';
 import Button from '../../components/Button/Button';
 import { useSelector, useDispatch } from 'react-redux';
-import { signIn } from '../../state/authSlice';
+import { clearError, signIn } from '../../state/authSlice';
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -19,12 +19,15 @@ const SignIn = ({ navigation }) => {
 
   const { isLoggedIn, error, status } = useSelector((state) => state.authSlice);
 
+  useEffect(() => {
+    dispatch(clearError());
+  }, [email, password]);
+
   const handleSignIn = async () => {
     const body = { email: email, password: password };
     dispatch(signIn(body));
   };
 
-  console.log(error);
   return (
     <Container>
       <View style={styles.navContainer}>
