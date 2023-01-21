@@ -9,7 +9,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Cart = ({ navigation }) => {
   const { cart } = useSelector((state) => state.cartSlice);
-  console.log(cart.quantity);
 
   const renderCart = ({ item }) => (
     <CartItem

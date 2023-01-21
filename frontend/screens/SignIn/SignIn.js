@@ -21,7 +21,9 @@ const SignIn = ({ navigation }) => {
   const { isLoggedIn, error, status } = useSelector((state) => state.authSlice);
 
   useEffect(() => {
-    dispatch(clearError());
+    if (error) {
+      dispatch(clearError());
+    }
   }, [email, password]);
 
   let valPassword = validInput(password);
@@ -50,6 +52,12 @@ const SignIn = ({ navigation }) => {
         <ScrollView
           keyboardShouldPersistTaps={'handled'}
           showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            alignItems: 'stretch',
+            flexGrow: 0.7,
+          }}
         >
           <View style={styles.container}>
             <View>

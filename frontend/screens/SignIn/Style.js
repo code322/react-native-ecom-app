@@ -20,11 +20,12 @@ export const styles = StyleSheet.create({
   },
 
   container: {
-    height: '100%',
     flexDirection: 'column',
     justifyContent: 'space-between',
     paddingBottom: 40,
     position: 'relative',
+    alignItems: 'stretch',
+    flex: 1,
   },
   image: {
     width: '100%',

@@ -36,7 +36,9 @@ const SignUp = ({ navigation }) => {
   };
 
   useEffect(() => {
-    dispatch(clearError());
+    if (error) {
+      dispatch(clearError());
+    }
   }, [email, password, name]);
 
   return (

@@ -4,7 +4,6 @@ import { style } from './Style';
 import { colors } from '../../theme/colors';
 
 const Button = ({ title, bgColor, txColor, handlePress, disableButton }) => {
-  console.log(disableButton);
   return (
     <View
       style={[
