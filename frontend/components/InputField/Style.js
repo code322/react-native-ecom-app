@@ -3,7 +3,7 @@ import { colors } from '../../theme/colors';
 export const styles = StyleSheet.create({
   container: {
     width: '100%',
-    marginBottom: 20,
+    marginBottom: 5,
     marginTop: 20,
   },
   label: {
