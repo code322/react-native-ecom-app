@@ -18,9 +18,14 @@ export const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 300,
+    paddingBottom: 30,
+    position: 'relative',
   },
   errorMessage: {
     textAlign: 'center',
     marginTop: 5,
+    position: 'absolute',
+    bottom: -20,
+    width: '100%',
   },
 });

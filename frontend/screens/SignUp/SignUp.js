@@ -9,7 +9,7 @@ import Button from '../../components/Button/Button';
 import { styles } from './Style';
 import { colors } from '../../theme/colors';
 import { useDispatch, useSelector } from 'react-redux';
-import { signUp } from '../../state/authSlice';
+import { clearError, signUp } from '../../state/authSlice';
 import Login from '../../assets/images/login.svg';
 
 const SignUp = ({ navigation }) => {
@@ -29,6 +29,7 @@ const SignUp = ({ navigation }) => {
   useEffect(() => {
     dispatch(clearError());
   }, [email, password, name]);
+
   return (
     <Container>
       <View style={styles.navContainer}>

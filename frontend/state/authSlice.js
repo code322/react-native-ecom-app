@@ -39,7 +39,7 @@ export const signUp = createAsyncThunk(
       await SecureStore.setItemAsync('token', data.token);
       return data;
     } catch (error) {
-      return rejectWithValue(error.response.data.message);
+      return rejectWithValue(error.response.data);
     }
   }
 );

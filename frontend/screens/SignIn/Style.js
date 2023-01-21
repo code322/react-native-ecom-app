@@ -14,13 +14,17 @@ export const styles = StyleSheet.create({
   errorMessage: {
     textAlign: 'center',
     marginTop: 5,
+    position: 'absolute',
+    bottom: -20,
+    width: '100%',
   },
 
   container: {
     height: '100%',
     flexDirection: 'column',
-    marginBottom: 30,
     justifyContent: 'space-between',
+    paddingBottom: 30,
+    position: 'relative',
   },
   image: {
     width: '100%',
