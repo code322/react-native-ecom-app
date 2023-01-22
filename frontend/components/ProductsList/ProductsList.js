@@ -9,11 +9,10 @@ const ListProducts = ({ images, title, price, id }) => {
   const navigation = useNavigation();
 
   return (
-    <>
+    <View style={style.imageContainer}>
       <TouchableOpacity
         onPress={() => navigation.push('Product', { id })}
         activeOpacity={0.8}
-        style={style.imageContainer}
       >
         <Image
           style={style.image}
@@ -24,7 +23,7 @@ const ListProducts = ({ images, title, price, id }) => {
         <Text style={style.title}>{title}</Text>
         <Text style={style.price}>{cost}</Text>
       </TouchableOpacity>
-    </>
+    </View>
   );
 };
 

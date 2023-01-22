@@ -3,10 +3,15 @@ import { colors } from '../../theme/colors';
 export const style = StyleSheet.create({
   imageContainer: {
     width: '47%',
+    maxWidth: 200,
+    borderColor: colors.mediumGray,
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 5,
   },
   image: {
-    width: '100%',
-    height: 170,
+    aspectRatio: 1,
+    resizeMode: 'contain',
     borderRadius: 10,
     marginBottom: 5,
     padding: 20,
