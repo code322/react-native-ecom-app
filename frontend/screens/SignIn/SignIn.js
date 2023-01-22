@@ -44,7 +44,7 @@ const SignIn = ({ navigation }) => {
           activeOpacity={0.8}
           onPress={() => navigation.goBack()}
         >
-          <Ionicons name='arrow-back-outline' size={40} color={colors.black} />
+          <Ionicons name='chevron-back' size={34} color={colors.black} />
         </TouchableOpacity>
         <Text style={styles.navTitle}>Sign In</Text>
       </View>
