@@ -7,16 +7,14 @@ export const style = StyleSheet.create({
     position: 'relative',
   },
   backIconContainer: {
-    backgroundColor: colors.mediumGray,
     height: 50,
     width: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 5,
     position: 'absolute',
     zIndex: 100,
     top: 40,
-    left: 30,
+    left: 10,
   },
   product: {
     backgroundColor: colors.white,

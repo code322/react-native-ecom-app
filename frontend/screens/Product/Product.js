@@ -28,7 +28,7 @@ const Product = ({ route, navigation }) => {
         style={style.backIconContainer}
         onPress={() => navigation.goBack()}
       >
-        <Ionicons name='arrow-back-outline' size={24} color={colors.black} />
+        <Ionicons name='chevron-back-circle' size={40} color={colors.black} />
       </TouchableOpacity>
       <View>
         <ImageCarousel image={product.images} />
