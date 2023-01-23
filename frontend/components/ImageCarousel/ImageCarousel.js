@@ -35,7 +35,7 @@ const ImageCarousel = ({ image }) => {
         viewabilityConfig={_viewabilityConfig}
         showsHorizontalScrollIndicator={false}
       />
-      {image.length > 1 && (
+      {image?.length > 1 && (
         <View style={styles.pagination}>
           {image.map((_, i) => (
             <View
