@@ -9,10 +9,11 @@ import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { AuthNav } from './navigation/AuthNav';
+import { selectIsLoggedIn } from './state/authSlice';
 
 const RootNavigation = () => {
   const Stack = createStackNavigator();
-  const { isLoggedIn } = useSelector((state) => state.authSlice);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <NavigationContainer>
       <SafeAreaProvider>

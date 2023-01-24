@@ -9,7 +9,7 @@ import FormContainer from '../../components/FormContainer/FormContainer';
 import InputField from '../../components/InputField/InputField';
 import Button from '../../components/Button/Button';
 import { useSelector, useDispatch } from 'react-redux';
-import { clearError, signIn } from '../../state/authSlice';
+import { clearError, selectError, signIn } from '../../state/authSlice';
 import { validEmail, validInput } from '../../helpers/tools';
 
 const SignIn = ({ navigation }) => {
@@ -18,7 +18,7 @@ const SignIn = ({ navigation }) => {
 
   const dispatch = useDispatch();
 
-  const { isLoggedIn, error, status } = useSelector((state) => state.authSlice);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     if (error) {

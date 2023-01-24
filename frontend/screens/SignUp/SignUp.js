@@ -9,8 +9,7 @@ import Button from '../../components/Button/Button';
 import { styles } from './Style';
 import { colors } from '../../theme/colors';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearError, signUp } from '../../state/authSlice';
-import Login from '../../assets/images/login.svg';
+import { clearError, selectError, signUp } from '../../state/authSlice';
 import { validEmail, validInput } from '../../helpers/tools';
 
 const SignUp = ({ navigation }) => {
@@ -20,7 +19,7 @@ const SignUp = ({ navigation }) => {
 
   const dispatch = useDispatch();
 
-  const { error } = useSelector((state) => state.authSlice);
+  const error = useSelector(selectError);
 
   let valPassword = validInput(password);
   let valEmail = validEmail(email);
