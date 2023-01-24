@@ -1,7 +1,7 @@
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProduct } from '../../state/productSlice';
+import { getProduct, selectProduct } from '../../state/productSlice';
 import ImageCarousel from '../../components/ImageCarousel/ImageCarousel';
 import { style } from './Style';
 import { Fontisto, Ionicons } from '@expo/vector-icons';
@@ -16,7 +16,7 @@ const Product = ({ route, navigation }) => {
     dispatch(getProduct(id));
   }, [id]);
 
-  const { product } = useSelector((state) => state.productSlice);
+  const product = useSelector(selectProduct);
 
   let price =
     '$' + product?.price?.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');

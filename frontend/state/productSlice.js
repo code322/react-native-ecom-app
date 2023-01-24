@@ -42,3 +42,5 @@ const productSlice = createSlice({
 });
 
 export default productSlice.reducer;
+
+export const selectProduct = (state) => state.productSlice.product;
