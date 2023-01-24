@@ -5,7 +5,11 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import Container from '../../components/Container/Container';
 import Categories from '../../components/Categories/Categories';
 import { categoriesType } from '../../data/categoriesType';
-import { getAllProducts } from '../../state/productsSlice';
+import {
+  getAllProducts,
+  selectProducts,
+  selectProductsStatus,
+} from '../../state/productsSlice';
 import ProductsList from '../../components/ProductsList/ProductsList';
 import * as Progress from 'react-native-progress';
 import { style } from './Style';
@@ -16,9 +20,8 @@ const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [keyword, setKeyword] = useState();
 
-  const { error, status, products } = useSelector(
-    (state) => state.productsSlice
-  );
+  const products = useSelector(selectProducts);
+  const status = useSelector(selectProductsStatus);
 
   useEffect(() => {
     dispatch(getAllProducts());
