@@ -6,9 +6,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import Container from '../../components/Container/Container';
 import { style } from './Style';
+import { selectFavourites } from '../../state/FavouriteSlice';
 
 const Favourites = () => {
-  const { favourites } = useSelector((state) => state.favouriteSlice);
+  const favourites = useSelector(selectFavourites);
 
   const renderFavourte = ({ item }) => (
     <FavouriteItem

@@ -26,3 +26,4 @@ const favourteSlice = createSlice({
 
 export default favourteSlice.reducer;
 export const { addToFav, removeFromFav } = favourteSlice.actions;
+export const selectFavourites = (state) => state.favouriteSlice.favourites;
