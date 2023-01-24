@@ -6,9 +6,10 @@ import Container from '../../components/Container/Container';
 import { Ionicons } from '@expo/vector-icons';
 import CartItem from '../../components/Item/Item';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { selectCart } from '../../state/cartSlice';
 
 const Cart = ({ navigation }) => {
-  const { cart } = useSelector((state) => state.cartSlice);
+  const cart = useSelector(selectCart);
 
   const renderCart = ({ item }) => (
     <CartItem
