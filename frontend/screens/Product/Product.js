@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct, selectProduct } from '../../state/productSlice';
@@ -8,6 +8,7 @@ import { Fontisto, Ionicons } from '@expo/vector-icons';
 import { colors } from '../../theme/colors';
 import { addToCart } from '../../state/cartSlice';
 import { addToFav } from '../../state/FavouriteSlice';
+
 const Product = ({ route, navigation }) => {
   const { id } = route.params;
   const dispatch = useDispatch();

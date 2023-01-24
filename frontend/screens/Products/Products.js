@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Container from '../../components/Container/Container';
