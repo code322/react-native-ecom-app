@@ -1,4 +1,8 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import {
+  createSlice,
+  createAsyncThunk,
+  createSelector,
+} from '@reduxjs/toolkit';
 import EnvironmentVariables from '../helpers/api';
 import axios from 'axios';
 const initialState = {
@@ -45,3 +49,30 @@ export default productsSlice.reducer;
 
 export const selectProducts = (state) => state.productsSlice.products;
 export const selectProductsStatus = (state) => state.productsSlice.status;
+
+export const productsSelector = createSelector(
+  [selectProducts, (state, selectedCategory, keyword) => selectedCategory],
+  (selectProducts, selectedCategory, keyword) => {
+    if (selectedCategory === 'all' && !keyword) {
+      return selectProducts;
+    } else if (selectedCategory === 'all' && keyword) {
+      return selectProducts.filter((product) =>
+        product.title.toLowerCase().includes(keyword.toLowerCase())
+      );
+    } else if (selectedCategory && !keyword) {
+      return selectProducts.filter((product) =>
+        product.category.toLowerCase().includes(selectedCategory.toLowerCase())
+      );
+    } else if (selectedCategory && keyword) {
+      return selectProducts.filter(
+        (product) =>
+          product.category
+            .toLowerCase()
+            .includes(selectedCategory.toLowerCase()) &&
+          product.title.toLowerCase().includes(keyword.toLowerCase())
+      );
+    } else {
+      return selectProducts;
+    }
+  }
+);

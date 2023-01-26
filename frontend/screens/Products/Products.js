@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import SearchBar from '../../components/SearchBar/SearchBar';
@@ -7,7 +7,7 @@ import Categories from '../../components/Categories/Categories';
 import { categoriesType } from '../../data/categoriesType';
 import {
   getAllProducts,
-  selectProducts,
+  productsSelector,
   selectProductsStatus,
 } from '../../state/productsSlice';
 import ProductsList from '../../components/ProductsList/ProductsList';
@@ -20,36 +20,15 @@ const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [keyword, setKeyword] = useState();
 
-  const products = useSelector(selectProducts);
   const status = useSelector(selectProductsStatus);
+
+  const productsData = useSelector((state) =>
+    productsSelector(state, selectedCategory, keyword)
+  );
 
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
-
-  let productsData = useMemo(() => {
-    if (selectedCategory === 'all' && !keyword) {
-      return products;
-    } else if (keyword && selectedCategory === 'all') {
-      return products.filter((product) =>
-        product.title.toLowerCase().includes(keyword.toLowerCase())
-      );
-    } else if (!keyword && selectedCategory) {
-      return products.filter((product) =>
-        product.category.toLowerCase().includes(selectedCategory.toLowerCase())
-      );
-    } else if (keyword && selectedCategory) {
-      return products.filter(
-        (product) =>
-          product.category
-            .toLowerCase()
-            .includes(selectedCategory.toLowerCase()) &&
-          product.title.toLowerCase().includes(keyword.toLowerCase())
-      );
-    } else {
-      return products;
-    }
-  }, [keyword, selectedCategory, products]);
 
   const renderCategories = ({ item }) => (
     <Categories
