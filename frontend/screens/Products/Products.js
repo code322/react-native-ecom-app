@@ -22,8 +22,13 @@ const Products = () => {
 
   const status = useSelector(selectProductsStatus);
 
+  const filterBy = {
+    selectedCategory,
+    keyword,
+  };
+
   const productsData = useSelector((state) =>
-    productsSelector(state, selectedCategory, keyword)
+    productsSelector(state, filterBy)
   );
 
   useEffect(() => {

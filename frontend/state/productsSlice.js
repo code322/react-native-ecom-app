@@ -51,8 +51,10 @@ export const selectProducts = (state) => state.productsSlice.products;
 export const selectProductsStatus = (state) => state.productsSlice.status;
 
 export const productsSelector = createSelector(
-  [selectProducts, (state, selectedCategory, keyword) => selectedCategory],
-  (selectProducts, selectedCategory, keyword) => {
+  [selectProducts, (state, filterBy) => filterBy],
+  (selectProducts, filterBy) => {
+    const { selectedCategory, keyword } = filterBy;
+
     if (selectedCategory === 'all' && !keyword) {
       return selectProducts;
     } else if (selectedCategory === 'all' && keyword) {
