@@ -28,10 +28,10 @@ const InputField = ({ label, placeholder, type, input, handleChange }) => {
               <Ionicons
                 name='ios-eye-off-outline'
                 size={24}
-                color={colors.black}
+                color={colors.gray}
               />
             ) : (
-              <Ionicons name='ios-eye-outline' size={24} color={colors.black} />
+              <Ionicons name='ios-eye-outline' size={24} color={colors.gray} />
             )}
           </TouchableOpacity>
         )}
