@@ -53,28 +53,24 @@ export const selectProductsStatus = (state) => state.productsSlice.status;
 export const productsSelector = createSelector(
   [selectProducts, (state, filterBy) => filterBy],
   (selectProducts, filterBy) => {
+    const ALL = 'all';
     const { selectedCategory, keyword } = filterBy;
 
-    if (selectedCategory === 'all' && !keyword) {
-      return selectProducts;
-    } else if (selectedCategory === 'all' && keyword) {
-      return selectProducts.filter((product) =>
-        product.title.toLowerCase().includes(keyword.toLowerCase())
-      );
-    } else if (selectedCategory && !keyword) {
-      return selectProducts.filter((product) =>
-        product.category.toLowerCase().includes(selectedCategory.toLowerCase())
-      );
-    } else if (selectedCategory && keyword) {
-      return selectProducts.filter(
-        (product) =>
-          product.category
-            .toLowerCase()
-            .includes(selectedCategory.toLowerCase()) &&
-          product.title.toLowerCase().includes(keyword.toLowerCase())
-      );
-    } else {
+    if (selectedCategory === ALL && !keyword) {
       return selectProducts;
     }
+
+    return selectProducts.filter((product) => {
+      const productCategory = product.category.toLowerCase();
+      const productTitle = product.title.toLowerCase();
+
+      const matchesCategory =
+        selectedCategory === ALL ||
+        productCategory.includes(selectedCategory.toLowerCase());
+      const matchesKeyword =
+        !keyword || productTitle.includes(keyword.toLowerCase());
+
+      return matchesCategory && matchesKeyword;
+    });
   }
 );
