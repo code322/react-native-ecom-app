@@ -33,4 +33,8 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.black,
     width: 30,
   },
+  inActiveLine: {
+    backgroundColor: colors.gray,
+    width: 30,
+  },
 });

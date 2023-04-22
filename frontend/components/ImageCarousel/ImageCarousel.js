@@ -42,7 +42,7 @@ const ImageCarousel = ({ image }) => {
               key={i}
               style={[
                 styles.paginationLine,
-                i === activeIndex ? styles.activeLine : {},
+                i === activeIndex ? styles.activeLine : styles.inActiveLine,
               ]}
             ></View>
           ))}
